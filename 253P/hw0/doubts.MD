@@ -1,0 +1,5 @@
+- gradescape 6 digit code to add 253P
+- ask for python
+- Create a __sample report and program file__. In the future Homeworks, we want a PDF document for your report, but for this week, you may use the __typescript__ you created in the previous step. The report should include screenshots showing you can make the program (using make which calls g++) and run the program under valgrind and that it produces the correct result and that there are no valgrind errors, but this typescript will be fine for only this week. 
+- for hw submission the maching name: __vbharot@andromeda-28__ mine is __vbharot@circinus-25__
+- use of library of cpp like upper bound, vectors
