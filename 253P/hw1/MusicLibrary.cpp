@@ -3,6 +3,8 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <vector>
+#include <time.h>
 
 #define SONGMAX 1024
 
@@ -82,23 +84,37 @@ void remove_song_from_MusicLibrary_by_name(string song_title) {
     transform(song_title.begin(), song_title.end(), song_title.begin(), ::tolower);
 
     if (i < 0 || i >= current_number_of_songs) {
-        cout << "song with title: " << song_title << " not found" << endl;
         return;
     }
 
     string found = music_library[i].title;
     transform(found.begin(), found.end(), found.begin(), ::tolower);
 
-    if (found != song_title) {
-        cout << "song with title: " << song_title << " not found" << endl;
-        return;
+    if (found == song_title) {
+        crunch_up_from_index(i);
+        current_number_of_songs -= 1;
+        remove_song_from_MusicLibrary_by_name(song_title);
     }
-
-    crunch_up_from_index(i);
-    current_number_of_songs -= 1;
-    // cout << "Succesfully deleted song with title: " << song_title << endl;
+    return;
 }
 
+
+/**
+ * handles the insertion of a new song into the music_library
+ * this handles the cases such the songs are sorted in Lexicographic order
+ * but the lower case appear before upper case
+ * @param insertion_index is the index to accomodate the new_song
+ * @parma new_song is the new song to be inserted
+ * */
+void insert_into_music_list(int insertion_index, Song new_song) {
+        vector<string> strings = { new_song.title, music_library[insertion_index].title };
+        sort(strings.begin(), strings.end(), std::locale("en_US.UTF-8"));
+        if (music_library[insertion_index].title == strings[0]) {
+            music_library[insertion_index+1] = new_song;
+        } else {
+            music_library[insertion_index] = new_song;
+        }
+}
 
 /**
  * takes a song and puts it in the MusicLibrary in memory in the proper location.
@@ -106,22 +122,27 @@ void remove_song_from_MusicLibrary_by_name(string song_title) {
  * */
 void add_song_to_MusicLibrary(Song new_song) {
     int i = find_index_of_song_with_name(new_song.title);
-    string song_title = new_song.title;
-    transform(song_title.begin(), song_title.end(), song_title.begin(), ::tolower);
+    crunch_down_from_index(i);
 
     if (i >= 0 && i < current_number_of_songs) {
-        
-        string found = music_library[i].title;
-        transform(found.begin(), found.end(), found.begin(), ::tolower);
-        if (found == song_title) {
-            cout << "input song with given title already exists, may be in with difference letter case" << endl;
-            return;
-        }
+        insert_into_music_list(i, new_song);
+    } else {
+        music_library[i] = new_song;
     }
-
-    crunch_down_from_index(i);
-    music_library[i] = new_song;
     current_number_of_songs += 1;
+}
+
+/**
+ * validates weather the year is a valid one in range [1900, current year]
+ * @param year to be validated
+ * @return boolean representing the validity
+ * */
+bool isValidYear(int year) {
+    time_t curr_time = time(NULL);
+    struct tm *aTime = localtime(&curr_time);
+    int curr_year = aTime->tm_year + 1900;
+
+    return year <= curr_year && year >= 1900; 
 }
 
 /**
@@ -129,14 +150,16 @@ void add_song_to_MusicLibrary(Song new_song) {
  * */
 void write_song() {
     Song new_song;
-    cout << "Title:";
-
-    // cin.ignore();
-    getline (cin, new_song.title);
-    cout << "Artist:";
-    getline (cin, new_song.artist);
-    cout << "Year Published:";
-    cin >> new_song.year_published;
+    int year;
+    cout << "Title:"; getline (cin, new_song.title);
+    cout << "Artist:"; getline (cin, new_song.artist);
+    cout << "Year Published:"; cin >> year;
+    if (!isValidYear(year)) {
+        cin.clear(); cin.ignore();
+        cout << "invalid year, please try again" << endl;
+        return;
+    }
+    new_song.year_published = year;
     cin.ignore();
     add_song_to_MusicLibrary(new_song);
 }
