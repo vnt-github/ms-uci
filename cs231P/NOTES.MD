@@ -18,3 +18,19 @@
 - claudia is TA
 - start working with questions and solutions
 - it's a sequential program
+
+- [ ] gcc -Wall randomDistribution1.c -lm
+- [ ] what is the certain tolerance value
+- [ ] For each simulation run, you are to compute the time-cumulative average of the access-time for each processor,
+    - [ ] and the arithmetic average W¯ (Sc(p, m, d)) of all processors’ time-cumulative averages. 
+    - [ ] The timecumulative average of a processor’s memory access at cycle c is defined as the total number of simulated memory cycles c divided by the total number of granted accesses so far(for that particular processor p1, or for all).
+        - [ ] here if a processors is starved then the value is say at cycle 2 => 2 / 0;
+
+- [ ] does access time reset if granted access
+- [ ] the mue is cycle 0 or cycle 1
+- [ ] does the memory requested by a processor change after fullfilment of remain same.
+- [ ] TODO: fix the first mean for gaussian distribution.
+- [ ] what is the accessed M is less that 6.
+- [ ] wrap around in cyclic manner.
+- [ ] what is tolerance value.
+- [ ] So we have a running averageof the wait time for each processor, then at the end teh average wait time of all processors.

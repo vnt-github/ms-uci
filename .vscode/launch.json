@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["roster.txt", "3"],
+            "args": ["32", "u"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
