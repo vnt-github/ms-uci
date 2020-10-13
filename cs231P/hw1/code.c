@@ -4,7 +4,7 @@
 #include <time.h>
 #include <math.h>
 
-#define TOLERANCE 0.1
+#define TOLERANCE 0.001
 
 // TODO: set  to 1000000
 #define MAX_CYCLES 1000000
@@ -89,7 +89,6 @@ void setMemoryRequest(int num_processors, int processors[], int num_memory_modul
 
 void allocateMemoryToProcessors(int num_processors, int processors[], int num_memory_modules, int memory_modules[], int access_times[], int start_i) {
     initArr(num_memory_modules, memory_modules, 0);
-    int no_request_denied = 0;
     for (int i = start_i; i-start_i < num_processors; i++)
     {
         if (memory_modules[processors[i%num_processors]] == 0) {
@@ -102,15 +101,13 @@ void allocateMemoryToProcessors(int num_processors, int processors[], int num_me
 }
 
 double getSystemAverageAccessTime(int cycle, int num_processors, int access_times[]) {
-    int w_sum = 0;
-
+    double time_cumulative_access_time_sum = 0;
     for (int i = 1; i < num_processors; i++)
     {
-        if (cycle-access_times[i] == 0)
-            return -1;
-        w_sum += (cycle) / (cycle-access_times[i]);
+        time_cumulative_access_time_sum += (cycle) / (cycle-access_times[i]);
     }
-    return w_sum/num_processors;
+    double arithematic_average_time_cumulative_access_time = time_cumulative_access_time_sum/(num_processors-1);
+    return arithematic_average_time_cumulative_access_time;
 }
 
 int getNextStart(int num_processors, int processors[]) {
@@ -120,6 +117,15 @@ int getNextStart(int num_processors, int processors[]) {
             return i;
     }
     return 1;
+}
+
+int skipCycle(int cycle, int num_processors, int access_times[]) {
+    for (int i = 0; i < num_processors; i++)
+    {
+        if (cycle == access_times[i])
+            return 1;
+    }
+    return 0;
 }
 
 double getAverageSystemMemoryAccessTime(int num_processors, int num_memory_modules, char distribution_type) {
@@ -143,7 +149,6 @@ double getAverageSystemMemoryAccessTime(int num_processors, int num_memory_modul
     int is_first_cycle = 1;
     double w = 0;
     double w_prev = -100000;
-    double w_next=-1;
     int start_i = 1;
     for (int cycle = 1; cycle < MAX_CYCLES + 1; cycle++)
     {
@@ -151,17 +156,10 @@ double getAverageSystemMemoryAccessTime(int num_processors, int num_memory_modul
         // TODO: set the first denied processor as the start of allocation priority at the next cycle
         setMemoryRequest(num_processors, processors, num_memory_modules, memory_modules, distribution_type, is_first_cycle, means);
         allocateMemoryToProcessors(num_processors, processors, num_memory_modules, memory_modules, access_times, start_i);
-        start_i = getNextStart(num_processors, processors);
-        w_next = getSystemAverageAccessTime(cycle, num_processors, access_times);
-        if (w_next == -1) {
-            if (w_prev == -100000) {
-                w = 0;
-            } else {
-                w = w_prev;
-            }
+        if (skipCycle(cycle, num_processors, access_times))
             continue;
-        }
-        w = w_next;
+        start_i = getNextStart(num_processors, processors);
+        w = getSystemAverageAccessTime(cycle, num_processors, access_times);
         if (abs(1 - w_prev/w) < TOLERANCE)
             break;
         w_prev = w;
@@ -180,11 +178,12 @@ int main(int argc, char const *argv[])
     int num_processors = atoi(argv[1]);
     char distribution_type = *argv[2];
     printf("p: %d c: %c \n", num_processors, distribution_type);
-
+    double val;
     // TODO: fix limits here
-    for (int num_memory_modules = 1; num_memory_modules <= 2048; num_memory_modules++)
+    for (int num_memory_modules = 1; num_memory_modules <= 200; num_memory_modules++)
     {
-        printf("%f ", getAverageSystemMemoryAccessTime(num_processors, num_memory_modules, distribution_type));
+        val = getAverageSystemMemoryAccessTime(num_processors, num_memory_modules, distribution_type);
+        printf("%.4f \n", val);
     }
     
     return 0;
