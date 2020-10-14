@@ -28,7 +28,7 @@ double getNormalRandomDistribution(double mean, double standard_deviation) {
     return normal_rand;
 }
 
-void initArr(int size, int arr[], int value) {
+void initArr(int size, int arr[], double value) {
     for (int i = 0; i <= size; i++)
     {
         arr[i] = value;
@@ -163,13 +163,52 @@ double getAverageSystemMemoryAccessTime(int num_processors, int num_memory_modul
         if (abs(1 - w_prev/w) < TOLERANCE)
             break;
         w_prev = w;
-        // for (int i = 0; i <= num_processors; i++)
-        // {
-        //     printf("cycle_i: %d p_i: %d m: %d\n", cycle, i, processors[i]);
-        // }
     }
 
     return w;
+}
+
+void verifyUniformRandomDistribution(int upper_value) {
+    int vals[upper_value];
+    initArr(upper_value, vals, 0);
+
+    double freq = 1000000;
+    for (int i = 0; i < freq; i++)
+    {
+        vals[getUniformRandomDistribution(1, upper_value)] += 1;
+    }
+    for (int i = 0; i < upper_value; i++)
+    {
+        printf("%f\n", (double)vals[i]/freq);
+    }
+}
+
+void verifyNormalDistribution(int upper_value) {
+    int vals[upper_value];
+    initArr(upper_value, vals, 0);
+
+    double x;
+    int p_val;
+
+    double freq = 1000000;
+    for (int i = 0; i < freq; i++)
+    {
+        x = getNormalRandomDistribution(upper_value/2, upper_value/6);
+        vals[(int)round(x)%upper_value] += 1;
+    }
+    for (int i = 0; i < upper_value; i++)
+    {
+        printf("%f\n", (double)vals[i]/freq);
+    }
+}
+
+void printAverageSystemMemoryAccessTime(int num_processors, char distribution_type, int max_no_memory_modules) {
+    double val;
+    for (int num_memory_modules = 1; num_memory_modules <= max_no_memory_modules; num_memory_modules++)
+    {
+        val = getAverageSystemMemoryAccessTime(num_processors, num_memory_modules, distribution_type);
+        printf("%.4f \n", val);
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -177,15 +216,14 @@ int main(int argc, char const *argv[])
     srand(time(0));
     int num_processors = atoi(argv[1]);
     char distribution_type = *argv[2];
+    int max_no_memory_modules = 2048;
     printf("p: %d c: %c \n", num_processors, distribution_type);
-    double val;
-    // TODO: fix limits here
-    for (int num_memory_modules = 1; num_memory_modules <= 200; num_memory_modules++)
-    {
-        val = getAverageSystemMemoryAccessTime(num_processors, num_memory_modules, distribution_type);
-        printf("%.4f \n", val);
-    }
+    printAverageSystemMemoryAccessTime(num_processors, distribution_type, max_no_memory_modules);
     
-    return 0;
+
+    // verifyUniformRandomDistribution(10);
+    // verifyNormalDistribution(10);
+
+
 }
 
