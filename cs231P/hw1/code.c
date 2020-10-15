@@ -9,18 +9,25 @@
 // TODO: set  to 1000000
 #define MAX_CYCLES 1000000
 
+// return a uniformly distributed random value between 0 and 1
 double rand_gen() {
-   // return a uniformly distributed random value between 0 and 1
    return ( (double)(rand()) + 1.0 )/( (double)(RAND_MAX) + 1.0 );
 }
 
+// Returns a scaled random value with a floor of @param range_low and a ceiling of @param range_high
 int getUniformRandomDistribution(int range_low, int range_high) {
     int range = range_high - range_low + 1;
     int rand_scaled = (rand_gen()*range) + range_low;
     return rand_scaled;
 }
 
-// Box–Muller_transform
+
+/**  
+ * 
+ * using Box–Muller_transform Generates normal distribution of two random variables between 0 and 1
+ * Multiplied with @param standard_deviation and added to @param mean to generate the desired distribution.
+ *
+ */
 double getNormalRandomDistribution(double mean, double standard_deviation) {
     double v1 = rand_gen();
     double v2 = rand_gen();
@@ -29,6 +36,7 @@ double getNormalRandomDistribution(double mean, double standard_deviation) {
 }
 
 void initArr(int size, int arr[], double value) {
+  // Initializes an array
     for (int i = 0; i <= size; i++)
     {
         arr[i] = value;
@@ -36,14 +44,17 @@ void initArr(int size, int arr[], double value) {
 }
 
 void initMemoryModules(int size, int memory_modules[]) {
+   // Initializes Memory Modules of specific count.
     initArr(size, memory_modules, 0);
 }
 
 void initProcessors(int size, int processors[]) {
+   // Initializes processor array of specific count.
     initArr(size, processors, 0);
 }
 
 void setUniformDistributionRequest(int num_processors, int processors[], int num_memory_modules) {
+   // Creates a uniform distribution for processors where any processor can request any available memory module.
     for (int i = 1; i < num_processors; i++)
     {
         if (processors[i] != 0) continue;
@@ -51,6 +62,12 @@ void setUniformDistributionRequest(int num_processors, int processors[], int num
     }
 }
 
+  /**
+   *
+   * In the first cycle, generates a uniform distribution for processors where any processor can request any available memory module.
+   * In the following cycles, creates a normal distribution with the constrains defined in the problem description.
+   *
+   */
 void setNormalDistributionRequest(int num_processors, int processors[], int num_memory_modules, int memory_modules[], int is_first_cycle, int means[]) {
     if (is_first_cycle) {
         setUniformDistributionRequest(num_processors, means, num_memory_modules);
@@ -73,7 +90,9 @@ void setNormalDistributionRequest(int num_processors, int processors[], int num_
 }
 
 
+// Creates the workload distribution for the simulation depending upon the input from @param distribution_type.
 void setMemoryRequest(int num_processors, int processors[], int num_memory_modules, int memory_modules[], char distribution_type, int is_first_cycle, int means[]) {
+  
     switch (distribution_type)
     {
     case 'u':
@@ -87,7 +106,9 @@ void setMemoryRequest(int num_processors, int processors[], int num_memory_modul
     }
 }
 
+// Allocates a memory module to a particular processor if possible or else increments the @param access_time[] of that particular processor. 
 void allocateMemoryToProcessors(int num_processors, int processors[], int num_memory_modules, int memory_modules[], int access_times[], int start_i) {
+    
     initArr(num_memory_modules, memory_modules, 0);
     for (int i = start_i; i-start_i < num_processors; i++)
     {
@@ -100,7 +121,9 @@ void allocateMemoryToProcessors(int num_processors, int processors[], int num_me
     }
 }
 
+// Calculates and returns the access-time for the entire system after a specific number of @param cycle.
 double getSystemAverageAccessTime(int cycle, int num_processors, int access_times[]) {
+  
     double time_cumulative_access_time_sum = 0;
     for (int i = 1; i < num_processors; i++)
     {
@@ -110,7 +133,9 @@ double getSystemAverageAccessTime(int cycle, int num_processors, int access_time
     return arithematic_average_time_cumulative_access_time;
 }
 
+// Determines the processor to be given access first in the next cycle.
 int getNextStart(int num_processors, int processors[]) {
+  
     for (int i = 0; i < num_processors; i++)
     {
         if (processors[i] != 0)
@@ -119,6 +144,7 @@ int getNextStart(int num_processors, int processors[]) {
     return 1;
 }
 
+// Determines whether a particular cycleshould be skipped.
 int skipCycle(int cycle, int num_processors, int access_times[]) {
     for (int i = 0; i < num_processors; i++)
     {
@@ -140,8 +166,6 @@ double getAverageSystemMemoryAccessTime(int num_processors, int num_memory_modul
 
     int access_times[num_processors];
     initArr(num_processors, access_times, 0);
-
-
 
     int memory_modules[num_memory_modules];
     initMemoryModules(num_memory_modules, memory_modules);
@@ -223,6 +247,7 @@ int main(int argc, char const *argv[])
 
     // verifyUniformRandomDistribution(10);
     // verifyNormalDistribution(10);
+    
 
 
 }
