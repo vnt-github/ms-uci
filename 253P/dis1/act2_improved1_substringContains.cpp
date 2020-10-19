@@ -4,11 +4,11 @@
 
 using namespace std;
 
-bool contains(string s1, string s2) {
-    bool ans = s2.size() >= s1.size() && (s2.find(s1) != string::npos);
-    return ans;
-}
-
+/**
+ * generates all the non-empty perfect substrings of a string
+ * @param word is the string whose substring are to be generated
+ * @return list of non-empty perfect substrings
+ * */
 vector<string> getSubstrings(string word) {
     vector<string> sub_strings;
     for (int i = 0; i < word.size(); i++)
@@ -22,6 +22,12 @@ vector<string> getSubstrings(string word) {
     return sub_strings;
 }
 
+/**
+ * logs the final output
+ * @param words is the list of input words
+ * @param words_map is the hash map of words with their corresponding superstrings list
+ * @param duplicates is the frequency count map to handle the duplicates
+ * */
 void printOutput(vector<string>& words, unordered_map<string, vector<string>>& words_map, unordered_map<string, int> duplicates) {
     cout << "output:" << endl;
     for (auto &&word : words)
@@ -35,7 +41,11 @@ void printOutput(vector<string>& words, unordered_map<string, vector<string>>& w
     }
 }
 
-void logSubstrings(vector<string> words) {
+/**
+ * main method which checks substring check for each word in list of words
+ * @param words is the list of input words
+ * */
+void containsSubstrings(vector<string>& words) {
     unordered_map<string, vector<string>> words_map;
     unordered_map<string, int> duplicates;
     for (auto &&each : words) { words_map[each] = {}; duplicates[each] += 1; }
@@ -55,6 +65,6 @@ int main(int argc, char const *argv[]) {
         words.push_back(argv[i]);
         cout << "\t" << argv[i] << endl;
     }
-    logSubstrings(words);
+    containsSubstrings(words);
     return 0;
 }
