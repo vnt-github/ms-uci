@@ -1,0 +1,4 @@
+- [ ] 80% scratch and python
+- [ ] part-time gig mon-friday: 2:30 - 7:30 saturday: 9 to 3.
+- [ ] w2. $15 dollar per hour.
+- [ ] neeed us cicitze or green card.
