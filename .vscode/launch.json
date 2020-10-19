@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["64", "u"],
+            "args": ["carry", "corporate", "roll", "came", "greedy", "ca", "face", "selfish", "corollary", "bad", "carry-on", "bad"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
