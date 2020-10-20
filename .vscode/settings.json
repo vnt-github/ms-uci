@@ -46,7 +46,8 @@
         "numeric": "c",
         "random": "c",
         "ratio": "c",
-        "set": "c"
+        "set": "c",
+        "unordered_set": "cpp"
     },
     "python.pythonPath": "/usr/bin/python3"
 }
