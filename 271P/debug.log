@@ -47,3 +47,7 @@
 [1016/212547.661:ERROR:process_memory_win.cc(73)] ReadMemory at 0x7ffe694d0000 of 64 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
 [1016/212547.661:WARNING:pe_image_reader.cc(340)] could not read dos header from C:\WINDOWS\SYSTEM32\UIAutomationCore.DLL
 [1019/141047.104:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1019/233255.828:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\asus\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\62d7d17e-6051-4f1e-b5a7-650f700d7d9b: The system cannot find the path specified. (0x3)
+[1019/233255.829:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\asus\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\f01bdaab-de24-4707-baa6-b5f7166b0fb9: The system cannot find the path specified. (0x3)
+[1019/233255.829:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1021/104014.943:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
