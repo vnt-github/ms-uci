@@ -11,6 +11,10 @@
 - [ ] curver should go down.
 
 
+- [ ] uniform is more noisy.
+    - [ ] in normal distrubution there will be more conflicts on moduels requested.
+    - [ ] so the random uniform distribution has less conflicts and it's less noisy 
+
 shane murphy
 jeff omidvaran
 trevor jones
