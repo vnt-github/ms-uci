@@ -1,0 +1,74 @@
+BEGIN:VCALENDAR
+METHOD:REQUEST
+PRODID:Microsoft Exchange Server 2010
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:Pacific Standard Time
+BEGIN:STANDARD
+DTSTART:16010101T020000
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=1SU;BYMONTH=11
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T020000
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=2SU;BYMONTH=3
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+ORGANIZER;CN=Anuraag Baishya:mailto:abaishya@adobe.com
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=Vineet Bha
+ rot:mailto:vbharot@uci.edu
+DESCRIPTION;LANGUAGE=en-US:Hello\,\n\nHope this time works for you. If not 
+ please feel free to reschedule\n\nOpening Link: https://adobe.wd5.myworkda
+ yjobs.com/external_university/job/San-Jose/XMLNAME-2021-Intern---Applicati
+ on-Security-Researcher_R100927\n\nRegards\,\nAnuraag\n\n\nAdobe Meetup\n\n
+ Video\, Voice and Screen Share [BlueJeans App]: https://bluejeans.com/7409
+ 885615?src=calendarLink\n\nScreen Share Only [BlueJeans App]: https://blue
+ jeans.com/7409885615/share\n\nConference Room [Adobe]: *02 7409885615\n\nA
+ udio Only [Phone]: Dial a number below and enter the meeting ID 7409885615
+  followed by #\n*Carrier fees may apply*\n\n+1.408.762.6550 (United States
+ (San Jose))\n+44.203.326.3744 (United Kingdom(London))\n+49.89.821.09900 (
+ Germany\,)\n+61.3.9115.7382 (Australia(Melbourne))\n+91.11.64802008 (IN)\n
+ +91.80.64802008 (IN)\nhttps://www.bluejeans.com/numbers\n\n\nAdditional Jo
+ in Options:\nConference Room [External/Non-Adobe]: Dial adobe.bjn.vc<http:
+ //adobe.bjn.vc> or 199.48.152.77 and enter the meeting ID followed by #\nV
+ ideo\, Voice and Screen Share [Browser]: https://bluejeans.com/7409885615/
+ webrtc\nScreen Share Only [Browser]: https://bluejeans.com/7409885615/shar
+ e/webrtc\n
+UID:040000008200E00074C5B7101A82E00800000000B1583A3D8FA8D601000000000000000
+ 0100000006194BA8E84542E4C9548377F3940E1A2
+SUMMARY;LANGUAGE=en-US:Adobe Application Security Intern Coding Interview
+DTSTART;TZID=Pacific Standard Time:20201102T110000
+DTEND;TZID=Pacific Standard Time:20201102T120000
+CLASS:PUBLIC
+PRIORITY:5
+DTSTAMP:20201022T162021Z
+TRANSP:OPAQUE
+STATUS:CONFIRMED
+SEQUENCE:0
+LOCATION;LANGUAGE=en-US:https://bluejeans.com/7409885615
+X-MICROSOFT-CDO-APPT-SEQUENCE:0
+X-MICROSOFT-CDO-OWNERAPPTID:2118825393
+X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INSTTYPE:0
+X-MICROSOFT-DONOTFORWARDMEETING:FALSE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MICROSOFT-LOCATIONDISPLAYNAME:https://bluejeans.com/7409885615
+X-MICROSOFT-LOCATIONSOURCE:None
+X-MICROSOFT-LOCATIONS:[{"DisplayName":"https://bluejeans.com/7409885615"\,"
+ LocationAnnotation":""\,"LocationUri":""\,"LocationStreet":""\,"LocationCi
+ ty":""\,"LocationState":""\,"LocationCountry":""\,"LocationPostalCode":""\
+ ,"LocationFullAddress":""}]
+BEGIN:VALARM
+DESCRIPTION:REMINDER
+TRIGGER;RELATED=START:-PT15M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR
