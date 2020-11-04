@@ -48,7 +48,11 @@
         "ratio": "c",
         "set": "c",
         "unordered_set": "cpp",
-        "socket.h": "c"
+        "socket.h": "c",
+        "mutex": "cpp",
+        "shared_mutex": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
     },
     "python.pythonPath": "/usr/bin/python3"
 }

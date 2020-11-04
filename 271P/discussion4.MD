@@ -1,0 +1,3 @@
+- [ ] 5 backtracking
+- [ ] arc consistency more time
+- [ ] several true or false
