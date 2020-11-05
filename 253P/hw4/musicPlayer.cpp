@@ -1,6 +1,19 @@
 #include <iostream>
+#include <regex>
 
 using namespace std;
+
+string ltrim(const string& s) {
+	return regex_replace(s, regex("^\\s+"), string(""));
+}
+
+std::string rtrim(const std::string& s) {
+	return regex_replace(s, regex("\\s+$"), string(""));
+}
+
+std::string trim(const std::string& s) {
+	return ltrim(rtrim(s));
+}
 
 struct Node {
     Node* next;
@@ -30,10 +43,23 @@ struct SimplePlayList {
         return ans;
     }
 
+    // process input for song queries and entries
+    Node* getSong() {
+        string title;
+        string artist;
+        cout << "Enter song title:";
+        getline(cin, title);
+        title = trim(title);
+        cout << "Enter song artist:";;
+        getline(cin, artist);
+        artist = trim(artist);
+        cout << endl;
+        return new Node(title, artist);
+    }
 
-    // add song to front and return bool representing status
-    void push(string title, string artist) {
-        Node* new_node = new Node(title, artist);
+    // add song to front
+    void push() {
+        Node* new_node = getSong();
         new_node->next = head;
         head = new_node;
         if (!current_node) current_node = head;
@@ -48,8 +74,8 @@ struct SimplePlayList {
     }
 
     // append to the end of playlist
-    bool queue(string title, string artist) {
-        Node* new_node = new Node(title, artist);
+    void queue() {
+        Node* new_node = getSong();
         Node* tail = getTail();
         if (!tail) head = new_node;
         else tail->next = new_node;
@@ -80,11 +106,13 @@ struct SimplePlayList {
     }
 
     // logs the song pointerd by node, previous song and the next song to node
-    void logSong(Node* node) {
+    void logSong(Node* node, Node* prev_node) {
+        // for calls when prev_node needs to be calculated like current
+        if (!prev_node)
+            prev_node = getPrevNode(node);
         if (!node) {
             cout << "empty playlist" << endl;
         } else {
-            Node* prev_node = getPrevNode(node);
             Node* next_node = getNextNode(node);
             cout << "the current_node song is: " << node->strNode() << endl;
             if (prev_node) cout << "\tthe previous song is: " << prev_node->strNode() << endl;
@@ -94,7 +122,7 @@ struct SimplePlayList {
 
     // log current song, previous song and next song to current song
     void current() {
-        logSong(current_node);
+        logSong(current_node, nullptr);
     }
 
     // delete current song and make next the current node in cyclic order
@@ -123,14 +151,16 @@ struct SimplePlayList {
     }
 
 
-    // return pointer to node with given title and artist
+    // return pointer previous to node with given title and artist
     Node* getNode(string title, string artist) {
         if (!head) return nullptr;
         
         Node* curr = head;
+        Node* prev = curr;
         while (curr) {
             if (curr->_title == title && curr->_artist == artist)
-                return curr;
+                return prev;
+            prev = curr;
             curr = curr->next;
         }
         cout << "cannot find song!" << endl;
@@ -138,24 +168,31 @@ struct SimplePlayList {
     }
 
     // find and log the given song with required title and artist
-    void find(string title, string artist) {
-        Node* node = getNode(title, artist);
+    void find() {
+        Node* input_node = getSong();
+        Node* node = getNode(input_node->_title, input_node->_artist);
+        delete input_node;
         if (!node) return;
-        logSong(node);
+        logSong(node->next, node);
     }
 
     // set current to found node with given title and artist
-    void changeTo(string title, string artist) {
-        Node* node = getNode(title, artist);
+    void changeTo() {
+        Node* input_node = getSong();
+        Node* node = getNode(input_node->_title, input_node->_artist);
+        delete input_node;
         if (!node) return;
-        current_node = node;   
+        current_node = node->next;   
     }
 
     // adds a song before another existing song
-    void addBefore(string title, string artist, string new_title, string new_artist) {
-        Node* node = getNode(title, artist);
+    void addBefore() {
+        Node* input_node = getSong();
+        Node* node = getNode(input_node->_title, input_node->_artist);
+        delete input_node;
         if (!node) return;
-        Node* new_node = new Node(new_title, new_artist);
+        node = node->next;
+        Node* new_node = getSong();
         if (node == head) {
             new_node->next = head;
             head = new_node;
@@ -167,10 +204,13 @@ struct SimplePlayList {
     }
 
     // adds a song after another existing song
-    void addAfter(string title, string artist, string new_title, string new_artist) {
-        Node* node = getNode(title, artist);
+    void addAfter() {
+        Node* input_node = getSong();
+        Node* node = getNode(input_node->_title, input_node->_artist);
+        delete input_node;
         if (!node) return;
-        Node* new_node = new Node(new_title, new_artist);
+        node = node->next;
+        Node* new_node = getSong();
         new_node->next = node->next;
         node->next = new_node; 
     }
@@ -178,9 +218,13 @@ struct SimplePlayList {
     // make random song the current song
     void random() {
         int len_songs = numberSongs();
+        if (!len_songs) {
+            cout << "empty playlist" << endl;
+            return;
+        }
         int randon_i = (rand() % len_songs) + 1;
         Node* curr = head;
-        for (int i = 0; i < randon_i; i++)
+        for (int i = 0; i < randon_i-1; i++)
             curr = curr->next;
         current_node = curr;
     }
@@ -196,41 +240,91 @@ struct SimplePlayList {
         }
     }
 
+    void freeNodes() {
+        Node* next;
+        Node* curr = head;
+        while (curr) {
+            next = curr->next;
+            delete curr;
+            curr = next;
+        }
+    }
 };
 
-int main(int argc, char const *argv[])
-{
-    // TODO: process input
+void musicPlayer() {
+    string command;
     SimplePlayList* p = new SimplePlayList();
+    while (true) {
+        cout << "command:";
+        cin >> command;
+        cin.clear(); cin.ignore();
+        if (command == "push")
+            p->push();
+        else if (command == "queue")
+            p->queue();
+        else if (command == "current")
+            p->current();
+        else if (command == "delete")
+            p->delete_curr();
+        else if (command == "prev")
+            p->prev();
+        else if (command == "next")
+            p->next();
+        else if (command == "restart")
+            p->restart();
+        else if (command == "find")
+            p->find();
+        else if (command == "changeTo")
+            p->changeTo();
+        else if (command == "addBefore")
+            p->addBefore();
+        else if (command == "addAfter")
+            p->addAfter();
+        else if (command == "random")
+            p->random();
+        else if (command == "print")
+            p->print();
+        else if (command == "exit")
+            break;
+        else
+            cout << "invalid command" << endl;
+    }
+    p->freeNodes();
+    delete p;
+}
+
+int main()
+{
+    musicPlayer();
+    // TODO: process input
     // push Mundian To Bach Ke [Panjabi MC]
-    p->push("Mundian To Bach Ke", "Panjabi MC");
-    // push My Immortal [Evanescence]
-    p->push("My Immortal", "Evanescence");
-    // queue California Love [Tupac]
-    p->queue("California Love", "Tupac");
-    p->print();
-    // next
-    p->next();
-    // current
-    p->current();
-    // addBefore Mundian To Bach Ke [Panjabi MC] Canta Per Me [Yuki Kajiura]
-    p->addBefore("Mundian To Bach Ke", "Panjabi MC", "Canta Per Me", "Yuki Kajiura");
-    // addAfter Mundian To Bach Ke [Panjabi MC] Shape Of My Heart [Sting]
-    p->addAfter("Mundian To Bach Ke", "Panjabi MC", "Shape Of My Heart", "Sting");
-    // current
-    p->current();
-    // prev
-    p->prev();
-    // prev
-    p->prev();
-    // delete
-    p->delete_curr();
-    // changeTo California Love [Tupac]
-    p->changeTo("California Love", "Tupac");
-    // current
-    p->current();
-    // find Mundian To Bach Ke [Panjabi MC]
-    p->find("Mundian To Bach Ke", "Panjabi MC");
-    // print
-    p->print();
+    // p->push();
+    // // push My Immortal [Evanescence]
+    // p->push();
+    // // queue California Love [Tupac]
+    // p->queue();
+    // // next
+    // p->next();
+    // // current
+    // p->current();
+    // // addBefore Mundian To Bach Ke [Panjabi MC] Canta Per Me [Yuki Kajiura]
+    // p->addBefore();
+    // // addAfter Mundian To Bach Ke [Panjabi MC] Shape Of My Heart [Sting]
+    // p->addAfter();
+    // // current
+    // p->current();
+    // // prev
+    // p->prev();
+    // // prev
+    // p->prev();
+    // // delete
+    // p->delete_curr();
+    // // changeTo California Love [Tupac]
+    // p->changeTo();
+    // // current
+    // p->current();
+    // // find Mundian To Bach Ke [Panjabi MC]
+    // p->find();
+    // // print
+    // p->print();
 }
