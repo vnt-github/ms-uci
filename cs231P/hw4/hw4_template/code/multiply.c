@@ -1,5 +1,6 @@
 #include <stdio.h> //remove if not using.
-
+#include <pthread.h>
+#include <stdlib.h>
 #include "util.h"//implementing
 
 typedef struct { //example structure
@@ -7,26 +8,68 @@ typedef struct { //example structure
     int e_g;
 } Example_Structure;
 
-static void example_helper_function(int n){
-    // Functions defined with the modifier 'static' are only visible
-    // to other functions in this file. They cannot be called from
-    // outside (for example, from main.c). Use them to organize your
-    // code. Remember that in C, you cannot use a function until you
-    // declare it, so declare all your utility functions above the
-    // point where you use them.
-    //
-    // Maintain the mat_sq_trans_xt functions as lean as possible
-    // because we are measuring their speed. Unless you are debugging,
-    // do not print anything on them, that consumes precious time.
-    //
-    // You may delete this example helper function and structure, and
-    // write your own useful ones.
+typedef struct
+{
+    Mat *A;
+    Mat *B;
+    Mat *C;
+    int i;
+} Args;
 
-    Example_Structure es1;
-    es1.example = 13;
-    es1.e_g = 7;
-    printf("n = %d\n", es1.example + es1.e_g + n);
+
+void* mult_row(void *args) {
+    Args *a = (Args*) args;
+    Mat* A = a->A;
+    Mat* B = a->B;
+    Mat* C = a->C;
+    int i = a->i;
+    for (int j = 0; j < B->n; j++)
+        for (int k = 0; k < B->n; k++)
+            C->ptr[C->n*i+j] += A->ptr[A->n*i+k]*B->ptr[B->n*k+j];
+    pthread_exit(NULL);
+}
+
+void mat_multiply_mt(Mat *A, Mat *B, Mat *C, unsigned int threads) {
+    pthread_t threads_arr[threads];
+    int ret;
+    Args args[A->n];
+    for (int i = 0; i < A->n; i++) {
+        args[i].A = A;
+        args[i].B = B;
+        args[i].C = C;
+        args[i].i = i;
+    }
+    
+    for (int t = 0; t < threads; t++)
+    {
+        ret = pthread_create(&threads_arr[t], NULL, &mult_row, (void*)&args[t]);
+    }
+
+    for (int i = threads; i < A->n; i++)
+    {
+        pthread_join(threads_arr[i%threads], NULL);
+        ret = pthread_create(&threads_arr[i%threads], NULL, &mult_row, (void*)&args[i]);
+        if (ret)
+            exit(-1);
+    }
+    
+    for (int t = 0; t < threads; t++)
+        pthread_join(threads_arr[t], NULL);
+    
     return;
+}
+
+void mat_multiply_st(Mat *A, Mat *B, Mat *C) {
+    for (int i = 0; i < A->n; i++)
+    {
+        for (int j = 0; j < B->m; j++)
+        {
+            for (int k = 0; k < A->m; k++)
+            {
+                C->ptr[C->n*i+j] += A->ptr[A->n*i+k]*B->ptr[B->n*k+j];
+            }
+        }
+    }
 }
 
 void mat_multiply(Mat *A, Mat *B, Mat *C, unsigned int threads){
@@ -34,5 +77,7 @@ void mat_multiply(Mat *A, Mat *B, Mat *C, unsigned int threads){
     //Remember to set the correct values for C->m, and C->n
     //after doing the multiplication.
     //example_helper_function(1000);
+    mat_multiply_mt(A, B, C, threads);
+    // mat_multiply_st(A, B, C);
     return;
 }

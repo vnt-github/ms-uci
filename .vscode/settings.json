@@ -52,7 +52,8 @@
         "mutex": "cpp",
         "shared_mutex": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "bitset": "c"
     },
     "python.pythonPath": "/usr/bin/python3"
 }
