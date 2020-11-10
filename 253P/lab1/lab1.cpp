@@ -121,7 +121,9 @@ void printGroups(vector<vector<string>> groups) {
  * @return boolean representing if s is Number or not.
  * */
 bool isNumber(string s)
-{ 
+{
+    if (s.length() > 1 && s[0] == '-')
+        s = s.substr(1);
     for (auto &&each : s)
         if (!isdigit(each))
             return false;
