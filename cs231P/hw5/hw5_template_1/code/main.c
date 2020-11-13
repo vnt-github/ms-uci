@@ -54,11 +54,11 @@ int main(int argc, char **argv){
     //run and measure time taken
     double ta, tb, tc, td;
     ta = stopwatch();
-    mat_sq_trans_st(&mats[0]);
+    // mat_sq_trans_st(&mats[0]);
     tb = stopwatch();
     mat_sq_trans_mt(&mats[1], 1, t);
     tc = stopwatch();
-    mat_sq_trans_mt(&mats[2], c, t);
+    // mat_sq_trans_mt(&mats[2], c, t);
     td = stopwatch();
 
     //print resulting matrices
@@ -73,9 +73,7 @@ int main(int argc, char **argv){
     }
 
     //print execution time
-    // printf("%.8f\n", tc-tb);
-    printf("%.8f, %.8f, %.8f\n", tb-ta, tc-tb, td-tc);
-
+    printf("%.8f\n", tc-tb);
     
     return 0;
 }

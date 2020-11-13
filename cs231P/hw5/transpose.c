@@ -93,11 +93,10 @@ void* transpose(void *args) {
         for (int g = 0; g < grain; g++)
         {
             if (curr_num >= max_num || g >= max_num || (!i && !j)) break;
-            printf("%d %d %d %d\n", curr_num, grain, i, j);
+            // printf("%d %d %d %d\n", curr_num, grain, i, j);
             swapMat(a->mat, i, j);
             setNext(&i, &j, a->mat->n);
         }
-        printf("\n--------\n");
     } while (curr_num < max_num);
 
     pthread_exit(NULL);

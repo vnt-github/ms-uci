@@ -6,11 +6,10 @@
 
 typedef struct
 {
-    pthread_mutex_t *pmtx;
-    int *count;
-    int max_num;
-    unsigned int grain;
     Mat *mat;
+    int i;
+    int j;
+    unsigned int grain;
 } Args;
 
 
@@ -40,7 +39,7 @@ void setIndices(int* i, int* j, int n) {
  * lower half of the matrix triangle without diagnol
  * @param i is the row index
  * @param j is the column index
- * @param n is the last number in lower half of the matrix
+ * @param n is the nth number in the lower half of the matrix
  * */
 void setNext(int* i, int* j, int n) {
     if (*i >= n-1 && *j == *i-1) {
@@ -54,52 +53,29 @@ void setNext(int* i, int* j, int n) {
     }
 }
 
-
 /**
- * perform swap of element st mat[i][j] <-> mat[j][i]
- * @param mat is the matrix whose elements are to be swapped
- * @param i is the row index
- * @param j is the column index
- * */
-void swapMat(Mat *mat, int i, int j) {
-    int temp = mat->ptr[i*mat->n+j];
-    mat->ptr[i*mat->n+j] = mat->ptr[j*mat->n+i];
-    mat->ptr[j*mat->n+i] = temp; 
-}
-
-/**
- * performs swap of grain number of entries at a time 
- * across the diagnol in the matrix.
+ * performs swap of entries across the diagnol in the matrix at index i and j.
  * @param *arg is a pointer to the argument object passed to the function.
  * @return void* is a pointer to the memory location of the return values cast to void.
  * */
 void* transpose(void *args) {
     Args *a = (Args*) args;
-    int i = 0, j = 0;
-    int curr_num=0;
-    int max_num=a->max_num;
+    Mat* mat = a->mat;
+    int i = a->i;
+    int j = a->j;
     unsigned int grain = a->grain;
-
-    do
+    // printf("\nstart: i: %d j:%d\n", i, j);
+    int temp;
+    for (int times = 0; times < grain; times++) 
     {
-        pthread_mutex_lock(a->pmtx);
-        curr_num = *(a->count);
-        *(a->count) += grain;
-        pthread_mutex_unlock(a->pmtx);
-
-        if (curr_num >= max_num) break;
-
-        setIndices(&i, &j, curr_num);
-        for (int g = 0; g < grain; g++)
-        {
-            if (curr_num >= max_num || g >= max_num || (!i && !j)) break;
-            printf("%d %d %d %d\n", curr_num, grain, i, j);
-            swapMat(a->mat, i, j);
-            setNext(&i, &j, a->mat->n);
-        }
-        printf("\n--------\n");
-    } while (curr_num < max_num);
-
+        if (!i && !j) break;
+        // printf("\ttimes: %d i: %d j:%d", times, i, j);
+        temp = mat->ptr[i*mat->n+j];
+        mat->ptr[i*mat->n+j] = mat->ptr[j*mat->n+i];
+        mat->ptr[j*mat->n+i] = temp;        
+        setNext(&i, &j, mat->n);
+    }
+    // printf("\n");
     pthread_exit(NULL);
 }
 
@@ -111,34 +87,34 @@ void* transpose(void *args) {
  * */
 void mat_sq_trans_mt(Mat *mat, unsigned int grain, unsigned int threads){
     pthread_t threads_arr[threads];
-
-    pthread_mutex_t mutex;
-    pthread_mutex_init(&mutex, NULL);
-
-    int shrd_count = 0;
-
-    int max_num = floor(mat->n*(mat->n-1)/2);
-    Args arg_thr = { &mutex, &shrd_count, max_num, grain, mat };
-
+    Args args[threads];
     int ret;
-
-    for (int i = 0; i < threads; i++)
+    int n = mat->n;
+    int n_end = n*(n-1)/2;
+    // printf("n_end %d\n", n_end);
+    int i=0, j=0, t=0;
+    int count = 0;
+    for (int times = 0; times < n_end; times+=grain)
     {
-        ret = pthread_create(&threads_arr[i], NULL, &transpose, (void*)&arg_thr);
-        if (ret) {
-            // printf("Error creating thread\n");
-            exit(-1);
+        // printf("t: %d times: %d\n", t, times);
+        if (count >= threads) {
+            pthread_join(threads_arr[t], NULL);
         }
+        setIndices(&i, &j, times);
+        args[t].mat = mat;
+        args[t].i = i;
+        args[t].j = j;
+        args[t].grain = grain;
+        ret = pthread_create(&threads_arr[t], NULL, &transpose, (void*)&args[t]);
+        if (ret) exit(-1);
+        count += 1;
+        // printf("\ndone %d\n", times);
+        t = (t+1)%threads;
     }
-
-
-    for (int i = 0; i < threads; i++)
+    for (int t = 0; t < count && t < threads; t++)
     {
-        pthread_join(threads_arr[i], NULL);
+        pthread_join(threads_arr[t], NULL);
     }
-
-
-    return;
 }
 
 /**

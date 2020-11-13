@@ -40,7 +40,7 @@ void setIndices(int* i, int* j, int n) {
  * lower half of the matrix triangle without diagnol
  * @param i is the row index
  * @param j is the column index
- * @param n is the last number in lower half of the matrix
+ * @param n is the nth number in the lower half of the matrix
  * */
 void setNext(int* i, int* j, int n) {
     if (*i >= n-1 && *j == *i-1) {
@@ -54,13 +54,6 @@ void setNext(int* i, int* j, int n) {
     }
 }
 
-
-/**
- * perform swap of element st mat[i][j] <-> mat[j][i]
- * @param mat is the matrix whose elements are to be swapped
- * @param i is the row index
- * @param j is the column index
- * */
 void swapMat(Mat *mat, int i, int j) {
     int temp = mat->ptr[i*mat->n+j];
     mat->ptr[i*mat->n+j] = mat->ptr[j*mat->n+i];
@@ -68,37 +61,32 @@ void swapMat(Mat *mat, int i, int j) {
 }
 
 /**
- * performs swap of grain number of entries at a time 
- * across the diagnol in the matrix.
+ * performs swap of entries across the diagnol in the matrix at index i and j.
  * @param *arg is a pointer to the argument object passed to the function.
  * @return void* is a pointer to the memory location of the return values cast to void.
  * */
 void* transpose(void *args) {
     Args *a = (Args*) args;
     int i = 0, j = 0;
-    int curr_num=0;
-    int max_num=a->max_num;
+    int curr_num = *a->count;
+    int max_num = a->max_num;
     unsigned int grain = a->grain;
-
-    do
-    {
+    setIndices(&i, &j, curr_num);
+    while (curr_num < max_num) {
         pthread_mutex_lock(a->pmtx);
         curr_num = *(a->count);
         *(a->count) += grain;
         pthread_mutex_unlock(a->pmtx);
 
-        if (curr_num >= max_num) break;
-
-        setIndices(&i, &j, curr_num);
         for (int g = 0; g < grain; g++)
         {
-            if (curr_num >= max_num || g >= max_num || (!i && !j)) break;
-            printf("%d %d %d %d\n", curr_num, grain, i, j);
+            // printf("%d %d %d %d %d\n", curr_num, max_num, grain, i, j);
+            if (!i && !j) break;
             swapMat(a->mat, i, j);
             setNext(&i, &j, a->mat->n);
         }
-        printf("\n--------\n");
-    } while (curr_num < max_num);
+        // printf("------------\n");
+    }
 
     pthread_exit(NULL);
 }
@@ -125,12 +113,12 @@ void mat_sq_trans_mt(Mat *mat, unsigned int grain, unsigned int threads){
     for (int i = 0; i < threads; i++)
     {
         ret = pthread_create(&threads_arr[i], NULL, &transpose, (void*)&arg_thr);
-        if (ret) {
-            // printf("Error creating thread\n");
-            exit(-1);
-        }
     }
 
+    if (ret) {
+        printf("Error creating thread\n");
+        exit(-1);
+    }
 
     for (int i = 0; i < threads; i++)
     {
