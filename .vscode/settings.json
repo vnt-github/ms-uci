@@ -54,7 +54,9 @@
         "regex": "cpp",
         "valarray": "cpp",
         "bitset": "c",
-        "list": "cpp"
+        "list": "cpp",
+        "typeindex": "cpp",
+        "complex": "cpp"
     },
     "python.pythonPath": "/usr/bin/python3"
 }
