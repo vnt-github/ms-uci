@@ -6,17 +6,19 @@
 
 using namespace std;
 
+// a vertex of a graph with name as tag and x, y as co-ordinates
 class graphNode {
     public:
+        string name;
         float x;
         float y;
-        string name;
         graphNode(string name, float x, float y): name(name), x(x), y(y) {}
         float distance(graphNode* other) {
             return sqrt(pow(x-other->x, 2) + pow(y-other->y, 2));
         }
 };
 
+// an edge between u and v with euclidean distance dist between then
 class graphEdge {
     public:
         graphNode* u;
@@ -27,6 +29,7 @@ class graphEdge {
         }
 };
 
+// a node for the disjoint set with Union By Rank and Path Compression
 class setNode {
     public:
         int rank;
@@ -36,6 +39,7 @@ class setNode {
         setNode();
 };
 
+// DisjointSet implementation using Union By Rank and Path Compression
 class DisjointSet
 {
 public:
@@ -78,17 +82,19 @@ bool compare(graphEdge a, graphEdge b) {
     return  a.dist < b.dist;
 }
 
-vector<graphEdge> getSortedEdges(vector<graphNode> nodes) {
+// return all the possible edges in the graph of nodes, sorted in ascending order by it's length.
+vector<graphEdge> getSortedEdges(vector<graphNode>& nodes) {
     vector<graphEdge> edges;
-    for (int i = 0; i < nodes.size(); i++)
-        for (int j = i+1; j < nodes.size(); j++)
+    for (unsigned int i = 0; i < nodes.size(); i++)
+        for (unsigned int j = i+1; j < nodes.size(); j++)
             edges.push_back(graphEdge(&nodes[i], &nodes[j]));
     
     sort(edges.begin(), edges.end(), compare);
     return edges;
 }
 
-void logZones(vector<graphEdge>& mst, vector<graphNode>& nodes, DisjointSet& ds) {
+// for all the zones log the nodes within a same zone.
+void logZones(vector<graphNode>& nodes, DisjointSet& ds) {
     unordered_map<string, vector<string>> rank_map;
     for (auto &&each : nodes)
         rank_map[ds.Find(each.name)->name].push_back(each.name);
@@ -103,26 +109,26 @@ void logZones(vector<graphEdge>& mst, vector<graphNode>& nodes, DisjointSet& ds)
     }
 }
 
+// create a mst with graph of nodes till theree are k disjoint sets as zones
 void getZones(vector<graphNode>& nodes, int k) {
     DisjointSet ds = DisjointSet(nodes);
     vector<graphEdge> mst;
     for (auto &&edge : getSortedEdges(nodes))
     {
-        if (ds.Union(edge.u->name, edge.v->name))
-            mst.push_back(edge);
         if (mst.size() == nodes.size() - k)
             break;
+        if (ds.Union(edge.u->name, edge.v->name))
+            mst.push_back(edge);
     }
-    logZones(mst, nodes, ds);
+    logZones(nodes, ds);
 }
 
-vector<graphNode> getNodes() {
+// parse input and create nodes for the graph
+vector<graphNode> getNodes(int n) {
     vector<graphNode> nodes;
-    int n=0;
-    cin >> n;
     string name;
-    int x=0;
-    int y=0;
+    float x=0;
+    float y=0;
     for (int i = 0; i < n; i++)
     {
         cin >> name;
@@ -134,43 +140,28 @@ vector<graphNode> getNodes() {
     return nodes;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
+    int n=0;
+    cin >> n;
+    if (!cin || n <= 0) {
+        cerr << "invalid n, n must be non negative integer" << endl;
+        return -1;
+    }
+    cin.clear(); cin.ignore();
     vector<graphNode> nodes;
-    nodes = getNodes();
+    nodes = getNodes(n);
     int k;
     while (true)
     {
         cin >> k;
-        if (k < 0) {
-            cout << "invalid k should be non-negative" << endl;
-            continue;
+        if (!cin || k < 0) {
+            cerr << "invalid k, k must be non negative integer" << endl;
         } else {
             cout << "K=" << k << endl;
-            getZones(nodes, max(1, k));
+            getZones(nodes, max(1, min((int)nodes.size(), k)));
         }
-            
+        cin.clear(); cin.ignore();     
     }
     return 0;
 }
-
-
-// nodes = {
-//     graphNode("A", 6, 2),
-//     graphNode("B", 7, 3),
-//     graphNode("C", 9, 3),
-//     graphNode("D", 8, 5),
-//     graphNode("E", 9, 8),
-//     graphNode("F", 8, 9),
-//     graphNode("M", 2, 8),
-//     graphNode("N", 2, 6),
-//     graphNode("O", 3, 5),
-//     graphNode("G", 7, 10),
-//     graphNode("H", 6, 11),
-//     graphNode("I", 8, 14),
-//     graphNode("J", 6, 14),
-//     graphNode("K", 4, 14),
-//     graphNode("L", 2, 14)
-// };
-//
-// NOTE:  k > 0 check or K >= num_nodes then return

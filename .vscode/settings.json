@@ -56,7 +56,21 @@
         "bitset": "c",
         "list": "cpp",
         "typeindex": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp",
+        "codecvt": "cpp",
+        "condition_variable": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cstring": "cpp",
+        "cuchar": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "scoped_allocator": "cpp",
+        "thread": "cpp"
     },
     "python.pythonPath": "/usr/bin/python3"
 }
