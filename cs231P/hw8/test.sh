@@ -1,0 +1,1 @@
+python3 hw8.py 5 1 2 5
