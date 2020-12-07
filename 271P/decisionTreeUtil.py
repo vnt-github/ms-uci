@@ -1,5 +1,6 @@
 from math import log2
 from functools import reduce
+from statistics import variance, pvariance
 
 def PlogP(accumulator, probability):
     return accumulator + (0 if not probability else probability*log2(probability))
@@ -37,9 +38,28 @@ if __name__ == "__main__":
     
     # print(h([1/2, 1/2]))
     # print(h([5/10, 5/10]) - (4/10*h([4/4, 0/4]) + 6/10*h([5/6, 1/6]) ))
-    print(4/8*(7.98-7.18) + 4/8*(7.98-3.5))
-    print(4/8*(7.98-12.69) + 4/8*(7.98-2.5))
-    print(6/8*(7.9843-9.3333) + 2/8*(7.98-2.5))
+    # print(4/8*(7.98-7.18) + 4/8*(7.98-3.5))
+    # print(4/8*(7.98-12.69) + 4/8*(7.98-2.5))
+    # print(6/8*(7.9843-9.3333) + 2/8*(7.98-2.5))
+    # original = pvariance([10, 12, 13, 14, 15, 16, 18, 19])
+    # print(original)
+    print(h([1/4, 3/4]))
+    print(h([5/10, 5/10]) - (3/10*h([3/3, 0/3]) + 7/10*h([2/7, 5/7]) ))
+
+    original = pvariance([8, 6, 9, 5, 2, 1, 3, 4])
+    print(6/8*(original-pvariance([8, 6, 9, 1, 3, 4])) + 2/8*(original-pvariance([5, 2])))
+    print(4/8*(original-pvariance([8, 9, 1, 4])) + 4/8*(original-pvariance([6, 5, 2, 3])))
+    print(4/8*(original-pvariance([8, 6, 9, 2])) + 4/8*(original-pvariance([5, 1, 3, 4])))
+
+    print()
+
+    original = 6.9375
+    print(6/8*(original-7.8055555555556) + 2/8*(original-2.25))
+    print(4/8*(original-10.25) + 4/8*(original-2.5))
+    print(4/8*(original-7.1875) + 4/8*(original-2.1875))
+
+
+
 
 
     
