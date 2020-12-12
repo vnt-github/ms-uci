@@ -19,6 +19,7 @@ int getMaxCount(unordered_map<char, int>& char_map) {
     return max_count;
 }
 
+// solution to leetcode 621. Task Scheduler
 int leastInterval(vector<char>& tasks, int n) {
     unordered_map<char, int> char_map = getCharMap(tasks);
     int max_count = getMaxCount(char_map);

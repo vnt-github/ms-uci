@@ -62,7 +62,7 @@ void setNext(int* i, int* j, int n) {
  * @param j is the column index
  * */
 void swapMat(Mat *mat, int i, int j) {
-    int temp = mat->ptr[i*mat->n+j];
+    auto temp = mat->ptr[i*mat->n+j];
     mat->ptr[i*mat->n+j] = mat->ptr[j*mat->n+i];
     mat->ptr[j*mat->n+i] = temp; 
 }
@@ -145,7 +145,7 @@ void mat_sq_trans_mt(Mat *mat, unsigned int grain, unsigned int threads){
  * @param mat is the matrix to be transposed
  * */
 void mat_sq_trans_st(Mat *mat){
-    int temp;
+    auto temp;
     for (int i = 0; i < mat->n; i++)
     {
         for (int j = i+1; j < mat->n; j++)

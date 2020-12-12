@@ -31,6 +31,7 @@ int getLength() {
     return ans;
 }
 
+// solution to leetcode 32. longest valid parentheses
 int longestValidParentheses(string s) {
     matches = vector<int>(s.length(), -1);
     int i = 0;

@@ -145,7 +145,7 @@ void mat_sq_trans_mt(Mat *mat, unsigned int grain, unsigned int threads){
  * @param mat is the matrix to be transposed
  * */
 void mat_sq_trans_st(Mat *mat){
-    int temp;
+    double temp;
     for (int i = 0; i < mat->n; i++)
     {
         for (int j = i+1; j < mat->n; j++)

@@ -28,7 +28,7 @@ void mat_init(Mat *mat, unsigned int m, unsigned int n){
 
 void mat_fill(Mat *mat){
     for(int i=0; i < mat->m*mat->n; i++){
-        mat->ptr[i] = (double)i;
+        mat->ptr[i] = (double)(i+0.1);
     }
     return;
 }
