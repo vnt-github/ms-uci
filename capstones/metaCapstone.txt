@@ -1,0 +1,4 @@
+- develop a website which takes the link of the folders where it's  uploaded and it'll recgonize the pdf and video and pitch to reorganize
+them  so that it's suitable for presentation
+- have options for coordinator for admin task of making a group active and inactive etc.
+- give download link to autorized and authenticated  students

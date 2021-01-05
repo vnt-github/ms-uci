@@ -1,0 +1,3 @@
+1. windows executable version of my published game https://play.google.com/store/apps/details?id=com.vnt.blockit&hl=en
+2. download https://drive.google.com/drive/folders/0B1N0fwIvzJkVUms3N0VvdU9POEU?usp=sharing
+3. extract and run main.exe and enjoy.

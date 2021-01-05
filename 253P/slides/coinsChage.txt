@@ -1,0 +1,4 @@
+https://runestone.academy/runestone/books/published/pythonds/Recursion/DynamicProgramming.html
+https://www.ccs.neu.edu/home/jaa/CS7800.12F/Information/Handouts/dyn_prog.pdf
+http://www.columbia.edu/~cs2035/courses/csor4231.F07/dynamic.pdf
+http://progressivecoder.com/coin-change-problem-dynamic-programming-approach/
