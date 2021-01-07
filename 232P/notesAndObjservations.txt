@@ -1,0 +1,48 @@
+
+
+TODO
+- [ ] make 5 observations on the dockerinitial png 
+    - https://goinbigdata.com/demystifying-ifconfig-and-network-interfaces-in-linux/
+    - http://support.tenasys.com/INtimeHelp_6/util_ifconfig.html#:~:text=The%20ifconfig%20utility%20is%20used,or%20configure%20network%20interface%20parameters.&text=See%20the%20prefixlen%20parameter%20below,of%20colon%2Dseparated%20hex%20digits.
+    - initial ip for eth0 is ipv6
+    - all types of packets stats is 0(as no data is transmitted or received).
+    - txqueuelen: length of transmission queue is 1000 (bytes).
+    - flags UP(interface is activated), BROADCAST (handle broadcast), Running (ready to accept data), MULTICAST(supports muticasting).
+    - MTU(maximum transmission unit) is 1500 bytes. IP datagrams larger than MTU bytes will be fragmented into multiple Ethernet frames.
+
+- [ ] Include the observed differences (minimum 2) between the outputs of the ifconfig command from Part 4 and Exercise 5-c.
+    - everything else except eth0 is same ( cos we only changed eth0 config ).
+    - now there is inet is in place of inet6 as we've setup ipv4, we have following changes for ipv4 in place of ipv6
+        - prefixlen 64(ipv6 saved for subdividing ntw) is gone
+        - scopid dis gone
+        - ipv4 ip netmask and borad cast addresses are added instead
+    - RX packets: now there are 16 packets of total 1256 bytes received
+    - TX packets: now there are 18 packets of total 1386 bytes are transmitted.
+
+- [ ] 2.	Why does the last ping in Step 4 fail? 
+    - may be cos it's serial3/0 to eth ip config?
+    - does not have neighbour labuser@PC1:~$ ip neighbor show
+        - 10.0.1.2 dev eth0 lladdr cc:02:2e:54:00:00 STALE
+        - 10.0.1.1 dev eth0 lladdr cc:01:6e:08:00:00 STALE
+        - 10.0.1.22 dev eth0 lladdr 6e:5a:80:d6:19:d7 STALE
+
+
+295
+- [ ] like capstone
+
+- simulate some physics phenomenon
+
+- tim berners lee project
+
+
+COMPSCI 238P Operating Systems
+
+COMPSCI 273P Machine Learning and Data Mining
+COMPSCI 260P Fundamentals of Algorithms with Applications
+COMPSCI 250P Computer Systems Architecture
+
+COMPSCI 222P Principles of Data Management
+
+COMPSCI 261P Data Structures with Applications
+COMPSCI 232P Computer and Communication Networks
+

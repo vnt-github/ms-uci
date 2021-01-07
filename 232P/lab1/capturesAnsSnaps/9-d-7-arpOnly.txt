@@ -1,0 +1,34 @@
+No.     Time           Source                Destination           Protocol Length Info
+     31 3.137292       Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+     54 4.489543       Facebook_31:2a:fb     IntelCor_80:65:ec     ARP      42     Who has 192.168.0.114? Tell 192.168.0.107
+     55 4.489562       IntelCor_80:65:ec     Facebook_31:2a:fb     ARP      42     192.168.0.114 is at 48:a4:72:80:65:ec
+    371 13.172196      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   1114 23.206476      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   1667 33.241663      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   1738 43.072145      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   1839 53.107615      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   1863 55.770065      40:a9:cf:bf:b0:c3     Broadcast             ARP      42     Who has 192.168.0.1? Tell 192.168.0.115
+   1920 63.142592      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2113 71.691399      Facebook_31:2a:fb     IntelCor_80:65:ec     ARP      42     Who has 192.168.0.114? Tell 192.168.0.107
+   2114 71.691434      IntelCor_80:65:ec     Facebook_31:2a:fb     ARP      42     192.168.0.114 is at 48:a4:72:80:65:ec
+   2125 73.179591      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2182 83.212726      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2310 93.248454      Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2512 103.079069     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2625 113.115752     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2716 123.149512     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   2724 124.489326     Facebook_31:2a:fb     IntelCor_80:65:ec     ARP      42     Who has 192.168.0.114? Tell 192.168.0.107
+   2725 124.489345     IntelCor_80:65:ec     Facebook_31:2a:fb     ARP      42     192.168.0.114 is at 48:a4:72:80:65:ec
+   2819 133.184438     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   3188 143.219639     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   3539 153.255726     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   3690 163.085509     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   3801 173.121270     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   3883 183.156189     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   3982 191.689556     Facebook_31:2a:fb     IntelCor_80:65:ec     ARP      42     Who has 192.168.0.114? Tell 192.168.0.107
+   3983 191.689592     IntelCor_80:65:ec     Facebook_31:2a:fb     ARP      42     192.168.0.114 is at 48:a4:72:80:65:ec
+   4042 193.193374     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   4246 203.227092     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   4421 213.261657     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   4511 223.094017     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
+   4613 233.127256     Espressi_9f:e9:91     Broadcast             ARP      42     ARP Announcement for 192.168.0.102
