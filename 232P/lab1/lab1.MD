@@ -21,6 +21,7 @@
         - current router running configuration
             ```
             show running-config
+            show interface
             ```
         - set ip address, for ethernet(lan) and serial(wan) interface
             ```
@@ -35,6 +36,11 @@
             Router1 (config)# exit
             ```
     - pc
+        - set ip
+            ```
+            PC1$ sudo ip addr flush dev eth0
+            PC1$ sudo ip addr add 10.0.1.11/24 dev eth0
+            ```
         - disable ping
             ```
             PC1$ sudo sh -c 'echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all'
