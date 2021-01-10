@@ -1,3 +1,6 @@
 [submodule "271P/cs271p-final"]
 	path = 271P/cs271p-final
 	url = https://github.com/vnt-github/cs271p-final
+[submodule "295P/capstone"]
+	path = 295P/capstone
+	url = https://github.com/vnt-github/capstone
