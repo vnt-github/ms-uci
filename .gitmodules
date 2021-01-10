@@ -4,3 +4,6 @@
 [submodule "295P/capstone"]
 	path = 295P/capstone
 	url = https://github.com/vnt-github/capstone
+[submodule "295P/keystone"]
+	path = 295P/keystone
+	url = https://github.com/vnt-github/keystone
