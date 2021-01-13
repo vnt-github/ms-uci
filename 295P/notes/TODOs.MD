@@ -1,0 +1,3 @@
+- [ ] use multip processing for better performance.
+- [ ] use GPU for the processing.
+- [ ] MISD for fault tolerance.
