@@ -1,0 +1,2 @@
+- project idea: make blockchain or p2p and use in 295P.
+- read about block chain.

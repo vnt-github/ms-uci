@@ -1,0 +1,3 @@
+- ssh localhost
+    - do the `sudo service ssh restart` if not success.
+    - need the id_rsa keys pair

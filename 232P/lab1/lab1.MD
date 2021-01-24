@@ -1,3 +1,12 @@
+
+- map network drive
+    - cisco connect vpn to uci.
+    - right click my computer
+    - click add network device
+    - enter \\masterhit.ics.uci.edu\network_lab as location and enter
+    - if does not work then select connect using different credentials
+        - connect and enter username: vbharot@ics.uci.edu and your uci password.
+
 - datagram vs packets vs frame vs segment
     - https://networkengineering.stackexchange.com/questions/50083/what-are-the-differences-in-the-contents-of-datagrams-frames-and-network-packe#:~:text=I%20know%20that%20datagrams%20are,as%20a%20payload%20of%20data.
     - https://i.stack.imgur.com/6dKkj.gif
@@ -14,11 +23,26 @@
 - arp: discovering link layer mac address associated with internet layer ipv4/6
 
 - config
-    - router server: gns3 vm
+    - select view->show hide interface labels.
+    - router server: gns3 vm.
+    - router: select auto idle pc on right click on the router in the main view windows.
+    - wireshark saves: Unless specifically requested, DO NOT include “Packet details” in lab reports.
+    - wireshark filters: lab1 appendex A.
+    - ipv4 subnet range: http://jodies.de/ipcalc?host=&mask1=&mask2=
+
+- mapping conventions:
+    - Ethernet0	==	FastEthernet0/0
+    - Ethernet1	==	FastEthernet1/0
+    - Serial0	==	Serial2/0
+    - Serial1	==	Serial2/1
+    - Ethernet3	==	FastEthernet3/0
+
+- new appliance:
+    - file -> new appliances. like docker pc etc.
 
 - commands
     - router
-        - current router running configuration
+        - current router running configuration, ip addresses of interfaces.
             ```
             show running-config
             show interface
