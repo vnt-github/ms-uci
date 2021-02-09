@@ -1,0 +1,65 @@
+Feb 05 14:55:13.250 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Feb 05 14:55:13.250 HYPERVISOR: Started on IP = 192.168.79.1, TCP port = 57769.
+Feb 05 14:55:13.726 HYPERVISOR: exec_cmd: hypervisor version 
+Feb 05 14:55:13.727 HYPERVISOR: exec_cmd: hypervisor working_dir C:\ms@uci\232P\lab3\lab3_1\project-files\dynamips 
+Feb 05 14:55:13.744 GENERAL: working_dir=C:\ms@uci\232P\lab3\lab3_1\project-files\dynamips
+Feb 05 14:55:13.745 HYPERVISOR: exec_cmd: hypervisor working_dir C:\ms@uci\232P\lab3\lab3_1\project-files\dynamips\ecff4844-d8a9-49e0-8fdc-146e01d4bf70 
+Feb 05 14:55:13.746 GENERAL: working_dir=C:\ms@uci\232P\lab3\lab3_1\project-files\dynamips\ecff4844-d8a9-49e0-8fdc-146e01d4bf70
+Feb 05 14:55:13.747 HYPERVISOR: exec_cmd: vm create Router1 1 c3600 
+Feb 05 14:55:13.753 VM: VM Router1 created.
+Feb 05 14:55:13.754 HYPERVISOR: exec_cmd: vm set_con_tcp_port Router1 5000 
+Feb 05 14:55:13.755 HYPERVISOR: exec_cmd: c3600 get_mac_addr Router1 
+Feb 05 14:55:13.757 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:13.758 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:55:13.759 HYPERVISOR: exec_cmd: vm set_idle_pc Router1 0x604f96b4 
+Feb 05 14:55:13.760 HYPERVISOR: exec_cmd: vm set_exec_area Router1 64 
+Feb 05 14:55:13.760 HYPERVISOR: exec_cmd: vm set_nvram Router1 256 
+Feb 05 14:55:13.761 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:55:13.762 HYPERVISOR: exec_cmd: vm slot_add_binding Router1 0 0 NM-1FE-TX 
+Feb 05 14:55:13.763 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:55:13.763 HYPERVISOR: exec_cmd: vm slot_add_binding Router1 1 0 NM-1FE-TX 
+Feb 05 14:55:13.764 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:55:13.764 HYPERVISOR: exec_cmd: vm slot_add_binding Router1 2 0 NM-4T 
+Feb 05 14:55:13.765 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:55:13.765 HYPERVISOR: exec_cmd: vm slot_add_binding Router1 3 0 NM-1FE-TX 
+Feb 05 14:55:13.848 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:21.500 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:24.552 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:24.762 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:25.587 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:48.119 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:51.258 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:55:52.546 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:57:53.226 HYPERVISOR: exec_cmd: nio create_udp udp-2446b48a-51a2-4c7b-861a-041d2a9ec3da 2007 127.0.0.1 2008 
+Feb 05 14:57:53.466 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router1 0 0 udp-2446b48a-51a2-4c7b-861a-041d2a9ec3da 
+Feb 05 14:57:53.467 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:58:01.316 HYPERVISOR: exec_cmd: nio create_udp udp-162b4d13-691a-463a-b0d9-7a194bc39d1b 2010 127.0.0.1 2011 
+Feb 05 14:58:01.319 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router1 1 0 udp-162b4d13-691a-463a-b0d9-7a194bc39d1b 
+Feb 05 14:58:01.319 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 14:58:30.428 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:58:30.538 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:58:38.098 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:58:43.040 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:58:57.476 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:58:58.134 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:58:58.290 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:59:25.082 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 14:59:26.580 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 15:00:45.492 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 15:00:46.062 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 15:00:46.129 HYPERVISOR: exec_cmd: vm set_ios Router1 C:/Users/asus/GNS3/images/IOS/c3640-a3js-mz.124-19b.image 
+Feb 05 15:01:01.108 HYPERVISOR: exec_cmd: vm set_ghost_status Router1 2 
+Feb 05 15:01:01.109 HYPERVISOR: exec_cmd: vm set_ghost_file Router1 C:\ms@uci\232P\lab3\lab3_1\project-files\dynamips\c3640-a3js-mz.124-19b.image-128.ghost 
+Feb 05 15:01:01.109 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 15:01:01.110 HYPERVISOR: exec_cmd: vm set_config Router1 configs\i1_startup-config.cfg 
+Feb 05 15:01:01.110 HYPERVISOR: exec_cmd: vm start Router1 
+Feb 05 15:01:31.389 HYPERVISOR: exec_cmd: vm extract_config Router1 
+Feb 05 16:29:42.606 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 16:29:42.607 HYPERVISOR: exec_cmd: vm stop Router1 
+Feb 05 16:29:42.754 VM: VM Router1 shutdown.
+Feb 05 16:29:42.754 HYPERVISOR: exec_cmd: vm extract_config Router1 
+Feb 05 16:29:48.942 HYPERVISOR: exec_cmd: vm set_ghost_status Router1 2 
+Feb 05 16:29:48.943 HYPERVISOR: exec_cmd: vm set_ghost_file Router1 C:\ms@uci\232P\lab3\lab3_1\project-files\dynamips\c3640-a3js-mz.124-19b.image-128.ghost 
+Feb 05 16:29:48.943 HYPERVISOR: exec_cmd: vm get_status Router1 
+Feb 05 16:29:48.944 HYPERVISOR: exec_cmd: vm set_config Router1 configs\i1_startup-config.cfg 
+Feb 05 16:29:48.944 HYPERVISOR: exec_cmd: vm start Router1 

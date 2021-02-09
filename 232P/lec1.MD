@@ -20,3 +20,14 @@
     - can't understand result etc.
     - 10% is based on legitimate piazza participation.
     - posing and answering questions.
+
+
+- 1 router 
+
+- df if fail where is refrragmented,  mf 0 is'nt it possible for 0 to arrive ealier than 1.
+    - if df is 1 should'nt router search for other paths, rather then sending back to source.
+
+- 32 bit addresses.
+
+- origins of 32 bit space?
+

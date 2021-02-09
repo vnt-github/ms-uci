@@ -44,13 +44,20 @@
     - router
         - current router running configuration, ip addresses of interfaces.
             ```
+            show ip interface brief
             show running-config
-            show interface
+            show startup-confi
+            show interfaces
+            show protocols
+            reload
+            copy running-config starting-config
             ```
         - set ip address, for ethernet(lan) and serial(wan) interface
             ```
-            Router1# config term
-            Router1 (config)# interface FastEthernet0/0 
+            Router1# configure terminal 
+            Router1(config)# no ip routing
+            Router1(config)# ip routing
+            Router1(config)# interface FastEthernet0/0
             Router1 (config-if)# ip address 10.0.1.1 255.255.255.0
             Router1 (config-if)# no shutdown
             Router1 (config-if)# interface Serial2/0 
@@ -73,3 +80,6 @@
             ```
             PC1$ sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
             ```
+fd15:8f7e:158f:0003:::0067/48
+fd15:8f7e:158f:0003:::0068/48
+fd15:8f7e:158f:0003:::0069/48
