@@ -44,7 +44,7 @@
                 - G3: **cash flow from operations exceeds net income** and 0 otherwise.
             - **Category 2: stock market’s *naïve extrapolation of current fundamentals*.**
                 - G4: **earnings variability** is less than the contemporaneous industry median and 0 otherwise.
-                - G5: firm’s sale **growth variability** is less than the contemporaneous industry median and 0 otherwise.
+                - G5: firm’s **sale growth variability** is less than the contemporaneous industry median and 0 otherwise.
             - **Category 3: *impact of conservatism* on the book-to-market ratio.**
                 - G6, G7 and G8: to equal 1 if a firm’s **R&D, capital expenditure and advertising intensity** are greater than the contemporaneous industry medians of the corresponding variables and 0 otherwise.
 

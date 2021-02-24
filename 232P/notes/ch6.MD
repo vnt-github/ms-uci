@@ -102,3 +102,14 @@ get_subnets(18, 10, 250)
     - 10.32.0.0/19
     - 10.0.96.100/24 - 10.0.96.100/32 typo?
     - on netwrork of R1: 10.0.96.0/24
+
+- broadcast addr for mac is = ff:ff:ff:ff:ff:ff
+
+- message-application(put on port)
+- segment-transport(tcp or udp)
+- datagram-network(ip addresses)
+- frame-data link layer(mac addresses)
+    - only allowed to change in between hops.
+
+- arp replies without blocking from  destination
+- after pings the unveriried hosts verify arp's for pings(can be dest only and can be both dest and host in case it uses previous neigh entry)

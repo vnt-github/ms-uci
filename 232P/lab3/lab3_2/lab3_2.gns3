@@ -93,7 +93,7 @@
                 "drawing_id": "59fbf0d4-1691-43d9-911f-2bea62f80734",
                 "locked": false,
                 "rotation": 0,
-                "svg": "<svg height=\"24\" width=\"84\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">10.0.1.1/24</text></svg>",
+                "svg": "<svg height=\"24\" width=\"84\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">10.0.1.2/24</text></svg>",
                 "x": -319,
                 "y": 21,
                 "z": 2
@@ -317,7 +317,7 @@
         "nodes": [
             {
                 "compute_id": "vm",
-                "console": 5000,
+                "console": 5007,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -338,11 +338,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5001,
+                    "aux": 5008,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "805a6bba5a8469570a80e6382392f3858946cc68d8a4caca9027a7131cc7697d",
+                    "container_id": "858cc7061bc69536f22cfb2e3be05033f17d1cdf31e7ee4296c112a2c593a244",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -359,7 +359,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5002,
+                "console": 5009,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -380,11 +380,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5003,
+                    "aux": 5010,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "befc5b0e05c2ba4bda674638c8cd0792b51aeaef83a0d137ba4cd8ef7e465677",
+                    "container_id": "80a9cc44440859e23c6060cb0628bb9a24bbee30b4fc25f8ee11591caffe4824",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -401,7 +401,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5004,
+                "console": 5011,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -422,11 +422,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5005,
+                    "aux": 5012,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "826719c2a1ea4d5ef9d299ab11681d1ba00f4ed1bf2dc4872f5a94ee539cfa77",
+                    "container_id": "d684ee3b4a45ab1a739e324bee0d6aa5dfb4dbb299311652a813265fcd133127",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -443,7 +443,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5006,
+                "console": 5013,
                 "console_auto_start": false,
                 "console_type": "none",
                 "custom_adapters": [],
@@ -523,7 +523,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5007,
+                "console": 5014,
                 "console_auto_start": false,
                 "console_type": "none",
                 "custom_adapters": [],
@@ -603,7 +603,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5000,
+                "console": 5002,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -659,7 +659,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5008,
+                "console": 5015,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -680,11 +680,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5009,
+                    "aux": 5016,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "a09807724de2dbc8c0cf7a091510989299afa475adb1b08d60e0817c783e236c",
+                    "container_id": "236d3ac3425654e469d7e9e4469185bf3656725acc826e8bf063454edacd9ead",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],

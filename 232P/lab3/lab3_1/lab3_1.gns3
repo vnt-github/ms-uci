@@ -156,7 +156,7 @@
                 "drawing_id": "18f14a41-144d-4c27-8709-bf82f9884d5a",
                 "locked": false,
                 "rotation": 0,
-                "svg": "<svg height=\"24\" width=\"130\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">ce:2c:60:ec:d2:e2 </text></svg>",
+                "svg": "<svg height=\"24\" width=\"126\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">ce:2c:60:ec:d2:e2</text></svg>",
                 "x": 28,
                 "y": 25,
                 "z": 2
@@ -168,6 +168,69 @@
                 "svg": "<svg height=\"26\" width=\"154\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">IP Address: 10.0.2.22/24</text></svg>",
                 "x": -5,
                 "y": 45,
+                "z": 2
+            },
+            {
+                "drawing_id": "bb57e977-ae3a-4750-92d8-6b841be99294",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"26\" width=\"184\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">fd01:2345:6789:2::1/64</text></svg>",
+                "x": 24,
+                "y": 254,
+                "z": 2
+            },
+            {
+                "drawing_id": "cbf39b1b-9f55-44e7-bead-4400df847da1",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"56\" width=\"170\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">\nfd01:2345:6789:3::1/64 \n</text></svg>",
+                "x": 251,
+                "y": 236,
+                "z": 2
+            },
+            {
+                "drawing_id": "838da77f-25c0-4215-980a-e1e93f0792ff",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"26\" width=\"184\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">fd01:2345:6789:1::2/64</text></svg>",
+                "x": -438,
+                "y": 249,
+                "z": 2
+            },
+            {
+                "drawing_id": "16246f79-f2c0-4e67-8a13-d3ffde6546b6",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"56\" width=\"170\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">\nfd01:2345:6789:2::2/64 \n</text></svg>",
+                "x": -223,
+                "y": 237,
+                "z": 2
+            },
+            {
+                "drawing_id": "41f4a31b-95b7-4104-ba95-9af9a49cee2e",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"26\" width=\"176\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">fd01:2345:6789:1::/64</text></svg>",
+                "x": -606,
+                "y": 222,
+                "z": 2
+            },
+            {
+                "drawing_id": "70628ae4-de65-407f-b916-88c2311eb189",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"56\" width=\"162\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">\nfd01:2345:6789:2::/64 \n</text></svg>",
+                "x": -87,
+                "y": 213,
+                "z": 2
+            },
+            {
+                "drawing_id": "fe6c8011-bb50-4f3c-8ac8-eb99af4ec387",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"56\" width=\"162\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">\nfd01:2345:6789:3::/64 \n</text></svg>",
+                "x": 401,
+                "y": 212,
                 "z": 2
             }
         ],
@@ -393,7 +456,7 @@
         "nodes": [
             {
                 "compute_id": "vm",
-                "console": 5000,
+                "console": 5017,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -414,11 +477,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5001,
+                    "aux": 5018,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "e75d6cc2d4aa0eb01a595fe1fcd93395f176d49b34376fc6858f25ff767b917a",
+                    "container_id": "e9b21f128323e04420aa2bb046636bb21de9ededb082a119a3ae4a1724a83458",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -435,7 +498,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5002,
+                "console": 5019,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -456,11 +519,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5003,
+                    "aux": 5020,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "989ec1a4349b67c001c1f60ed5bcc479b159ad28d83133b3b8c4e1b0a7abe77d",
+                    "container_id": "f97d2b529270b4cb34b21fe9082acc9116ee3da6c3ebce7a55e1efc29d4de561",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -477,7 +540,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5004,
+                "console": 5021,
                 "console_auto_start": false,
                 "console_type": "none",
                 "custom_adapters": [],
@@ -557,7 +620,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5000,
+                "console": 5003,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -613,7 +676,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5005,
+                "console": 5022,
                 "console_auto_start": false,
                 "console_type": "none",
                 "custom_adapters": [],
@@ -693,7 +756,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5001,
+                "console": 5004,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -749,7 +812,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5006,
+                "console": 5023,
                 "console_auto_start": false,
                 "console_type": "none",
                 "custom_adapters": [],
@@ -829,7 +892,7 @@
             },
             {
                 "compute_id": "vm",
-                "console": 5007,
+                "console": 5024,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -850,11 +913,11 @@
                 "port_segment_size": 0,
                 "properties": {
                     "adapters": 2,
-                    "aux": 5008,
+                    "aux": 5025,
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "e3245ad2a037ae4bd4445123949f7e08b3f5bc8ef89f634c08f4b0f25f8f7298",
+                    "container_id": "f31bb5a0b1a46189b62a94f0618debb06e131495b1a32f0bfd6c9d04206107eb",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],

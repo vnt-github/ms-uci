@@ -1,0 +1,122 @@
+- actual result by week 2-3
+- public competetion
+	- results published publically
+- week 6-7 review
+
+
+- there would be metrics fixed
+
+---
+projects
+ELLIOT
+- linear algeaby calculation
+	- all encumpsing calculation
+	- add to spreadsheet
+	- vectorization in backend
+	- eigenvalue.com etc but centralized
+
+	- inverting is not trivial
+	- matrix of any size is difficult
+	- test cases added
+	- code evaluated on the memory and cpu efficiency
+	- https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=2015%20NU13
+
+
+- astriod impact predictor TOO DIFFICULT
+	- physics simulation
+	- data available publically at NASA db
+
+TREVOR JONES
+- ml/deep learning + sports
+	- moneyball AI.
+	- historical sports data.
+	- fifa bots arn't
+	- https://www.kaggle.com/hugomathien/soccer
+
+- anahita
+	- ml stock price predictor model
+	- gather data
+		- yahoo finance
+		- professor have
+	- find if some stocks predictble then others
+	- professor did the for 15 years
+		- wrote scrapper to get quotes.
+	- stock pickers exist
+		- million people doing it so its impact dimishes.
+
+
+PROBLEM
+- registry of type of data
+	- JSON ld for data scrapping would have made easier
+
+KUMAR VAIBHAV
+- html generator (vix)
+
+
+
+- profs student
+- gnome sequencing
+	- gnome assembly of the human
+	- biologists or machines product sequence
+	- where in the gnove couple 500 letters come from 3 billions came from
+	- reads is sequence of letter, millions of reads each 500 letters.
+	- product the overlap.
+	- 1 dimesional problem
+
+	- machine makes error (2-3 are wrong letter)
+	- gene duplication event
+	- 100 million letter occur twice (similar but differ slightly)
+
+	- distinguish btw correct and wrong.
+
+	- ncbi data available
+	- tons of paper available.
+---
+- edge prediction model(half is working on it)
+	- gnome is same, it's static molecule
+		- it's recipy to make protein
+	- protein made and do stuff made by gnome
+	- 20 thousand diff genes
+	- 20 thousand diff types of proteins are made with diff functions.
+	- protein interact with each other.
+	- oxygen is not supposed to be free
+	- so protein protein interaction does this.
+	- protein stops working it becomes diseases.
+
+	- protein protein intr is graph with 20K
+	- some edges are bogus
+	- interactions are difficult to discover
+
+	- false negative is 10%.
+
+	- take exiting data, assume most right
+	- can we detect if a particular graph edge is bogus.
+	- professor have program to produce table
+
+	- 10 to half mil for data of edge exists or not.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

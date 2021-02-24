@@ -1,0 +1,5 @@
+- farhaan ML
+- fundamentals need to calculate contemporaneous industry average.
+- i am working on that part.
+    - i've extracted industry and sector field from html.
+    - in pydoop i've grouped using theses industry and aggregated these.
