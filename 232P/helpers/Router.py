@@ -283,7 +283,139 @@ show ip cache
 def traceroute(destination):
     return f"""trace {destination}"""
 
+def show_routing_config():
+    return f"show ip protocols"
 
+def enable_debugging_rip():
+    return f"debug ip rip"
+
+def disable_debugging_rip():
+    return f"no {enable_debugging_rip()}"
+
+def enable_rip():
+    return f"""
+config term
+router rip
+exit
+"""
+
+def disable_rip():
+    return f"""
+config term
+no router rip
+exit
+"""
+
+# THE SUBNET IS ALWAYS 24, use end 0s for subnets
+# https://learncisco.net/courses/icnd-1/ip-routing-technologies/enabling-rip.html
+# https://learningnetwork.cisco.com/s/question/0D53i00000Kt6cX/rip-timers
+def setup_rip(network, update_sec, invalid_sec, hold_sec, flush_sec):
+    return f"""
+config term
+router rip
+version 2
+network {network}
+timers basic {update_sec} {invalid_sec} {hold_sec} {flush_sec}
+end
+"""
+
+# offset-list 0 in 10 f0/0
+def set_rip_offset(interface, in_out, value):
+    return f"""
+config term
+router rip
+offset-list 0 {in_out} {value} {getInterface(interface)}
+end
+"""
+# no offset-list 0 in 10 f0/0
+def unset_rip_offset(interface, in_out, value):
+    return f"""
+config term
+router rip
+no offset-list 0 {in_out} {value} {getInterface(interface)}
+end
+"""
+
+# Triggered updates are disabled by setting the flash-update-threshold timer to the same value as the update timer(default=30s).
+def disable_trigger_update(time=30):
+    return f"""
+config term
+router rip
+flash-update-threshold {time}
+end
+"""
+
+# IOS: privileged EXEC
+def ospf_config():
+    return f"show ip ospf"
+
+def show_ospf_routes():
+    return f"show ip route ospf"
+
+def show_ospf_db():
+    return f"show ip ospf database"
+
+def show_ospf_netork_link_state():
+    return f"show ip ospf database network"
+
+def show_ospf_router_link_state():
+    return f"show ip ospf database router"
+
+# INVERT NET MASK http://saloperie.com/docs/mask.html
+# Router1# configure terminal
+# Router1(config)# no ip routing
+# Router1(config)# ip routing
+# Router1(config)# router ospf 1
+# Router1(config-router)# network 10.0.0.0 0.255.255.255 area 1
+# Router1(config-router)# end
+def setup_ospf(network, mask, area=1):
+    return f"""
+config term
+router ospf 1
+network {network} {getMask(mask, True)} area {area}
+end
+"""
+
+def set_ospf_metric(interface, value):
+    return f"""
+config term
+interface {getInterface(interface)}
+ip ospf cost {value}
+end
+show ip ospf interface
+"""
+
+def show_bgp_routes():
+    return f"show ip bgp"
+
+def show_bgp_peers():
+    return f"show ip bgp neighbors"
+
+def show_bgp_paths():
+    return f"show ip bgp paths"
+
+def flush_bgp_routes():
+    return f"clear ip bgp *"
+
+def set_bgp_timers(as_id, keep_alive=60, hold_time=180):
+    return f"""
+config term
+router bgp {as_id}
+timers bgp {keep_alive} {hold_time}
+end
+"""
+
+def setup_bgp(as_id, network, mask, neighbors=[]):
+    neighbors_add_commands = '\n'.join([f'neighbor {ip} remote-as {as_id}'  for ip, as_id in neighbors])
+    return f"""
+config term
+router bgp {as_id}
+{neighbors_add_commands}
+network {network} mask {getMask(mask)}
+end
+clear ip bgp *
+show ip bgp summary
+"""
 
 if __name__ == "__main__":
     # print(disable_cdp())
@@ -364,3 +496,68 @@ if __name__ == "__main__":
     # print(set_interface_ip4("e0", "66.45.2.3", "24"))
     # print(set_interface_ip4("e1", "66.45.3.3", "24"))
     # print(add_default_route_ip4("66.45.2.1"))
+    
+    # LAB3
+    # R1
+    # print(set_interface_ip4("e0", "10.0.1.1", "24"))
+    # print(set_interface_ip4("e1", "10.0.2.1", "24"))
+
+    # R2
+    # print(set_interface_ip4("e0", "10.0.3.2", "24"))
+    # print(set_interface_ip4("e1", "10.0.2.2", "24"))
+    
+    # R3
+    # print(set_interface_ip4("e0", "10.0.3.3", "24"))
+    # print(set_interface_ip4("e1", "10.0.4.3", "24"))
+    
+    # R1, R2 and R3
+    # print(setup_rip("10.0.0.0", 10))
+
+    # R4
+    # print(set_interface_ip4("e0", "10.0.1.33", "24"))
+    # print(set_interface_ip4("e1", "10.0.3.33", "24"))
+
+    # print(setup_rip("10.0.0.0", 10, 60, 60, 80))
+
+    # R5
+    # print(set_interface_ip4("e0", "10.0.2.4", "24"))
+    # print(set_interface_ip4("e1", "10.0.4.4", "24"))
+
+    # print(setup_ospf("10.0.0.0", "8"))
+
+    # print(set_ospf_metric("e0", 1))
+
+    # BGP
+    # R1
+    # print(set_interface_ip4("e0", "10.0.1.1", "24"))
+    # print(set_interface_ip4("e1", "10.0.10.1", "24"))
+    # print(setup_bgp(100, "10.0.1.0", "24", [
+    #     ("10.0.10.2", 200),
+    #     ("10.0.10.33", 300),
+    # ]))
+
+    # R2
+    # print(set_interface_ip4("e0", "10.0.2.2", "24"))
+    # print(set_interface_ip4("e1", "10.0.10.2", "24"))
+    # print(setup_bgp(200, "10.0.2.0", "24", [
+    #     ("10.0.10.1", 100),
+    #     ("10.0.10.33", 300),
+    # ]))
+
+    # R3
+    # print(set_interface_ip4("e0", "10.0.3.3", "24"))
+    # print(set_interface_ip4("e1", "10.0.20.3", "24"))
+    # print(setup_bgp(300, "10.0.3.0", "24", [
+    #     ("10.0.20.4", 400),
+    # ]))
+
+    # R4
+    print(set_interface_ip4("e0", "10.0.4.4", "24"))
+    print(set_interface_ip4("e1", "10.0.20.4", "24"))
+    print(setup_bgp(400, "10.0.4.0", "24", [
+        ("10.0.20.3", 300),
+    ]))
+
+    # R5
+    # print(set_interface_ip4("e0", "10.0.3.33", "24"))
+    # print(set_interface_ip4("e1", "10.0.10.33", "24"))

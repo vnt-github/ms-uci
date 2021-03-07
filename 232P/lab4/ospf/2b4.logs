@@ -1,0 +1,205 @@
+
+Router1#show ip ospf database
+
+            OSPF Router with ID (10.0.2.1) (Process ID 1)
+
+                Router Link States (Area 1)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+10.0.2.1        10.0.2.1        178         0x80000003 0x00468E 2
+10.0.3.2        10.0.3.2        214         0x80000003 0x00BE0B 2
+10.0.3.33       10.0.3.33       179         0x80000002 0x0059F6 2
+10.0.4.3        10.0.4.3        160         0x80000003 0x0005B8 2
+10.0.4.4        10.0.4.4        161         0x80000003 0x00D8E3 2
+
+                Net Link States (Area 1)
+
+Link ID         ADV Router      Age         Seq#       Checksum
+10.0.1.1        10.0.2.1        178         0x80000001 0x006184
+10.0.2.1        10.0.2.1        158         0x80000002 0x00CB21
+10.0.3.2        10.0.3.2        179         0x80000002 0x005E6A
+10.0.4.3        10.0.4.3        160         0x80000001 0x00AD47
+
+Router1#show ip ospf database network
+
+            OSPF Router with ID (10.0.2.1) (Process ID 1)
+
+                Net Link States (Area 1)
+
+  Routing Bit Set on this LSA
+  LS age: 186
+  Options: (No TOS-capability, DC)
+  LS Type: Network Links
+  Link State ID: 10.0.1.1 (address of Designated Router)
+  Advertising Router: 10.0.2.1
+  LS Seq Number: 80000001
+  Checksum: 0x6184
+  Length: 32
+  Network Mask: /24
+        Attached Router: 10.0.2.1
+        Attached Router: 10.0.3.33
+
+  Routing Bit Set on this LSA
+  LS age: 166
+  Options: (No TOS-capability, DC)
+  LS Type: Network Links
+  Link State ID: 10.0.2.1 (address of Designated Router)
+  Advertising Router: 10.0.2.1
+  LS Seq Number: 80000002
+  Checksum: 0xCB21
+  Length: 36
+  Network Mask: /24
+        Attached Router: 10.0.2.1
+        Attached Router: 10.0.3.2
+        Attached Router: 10.0.4.4
+
+  Routing Bit Set on this LSA
+  LS age: 201
+  Options: (No TOS-capability, DC)
+  LS Type: Network Links
+  Link State ID: 10.0.3.2 (address of Designated Router)
+  Advertising Router: 10.0.3.2
+  LS Seq Number: 80000002
+  Checksum: 0x5E6A
+  Length: 36
+  Network Mask: /24
+        Attached Router: 10.0.3.2
+        Attached Router: 10.0.3.33
+        Attached Router: 10.0.4.3
+
+  Routing Bit Set on this LSA
+  LS age: 185
+  Options: (No TOS-capability, DC)
+  LS Type: Network Links
+  Link State ID: 10.0.4.3 (address of Designated Router)
+  Advertising Router: 10.0.4.3
+  LS Seq Number: 80000001
+  Checksum: 0xAD47
+  Length: 32
+  Network Mask: /24
+        Attached Router: 10.0.4.3
+        Attached Router: 10.0.4.4
+
+Router1#
+Router1#show ip ospf database router
+
+            OSPF Router with ID (10.0.2.1) (Process ID 1)
+
+                Router Link States (Area 1)
+
+  LS age: 213
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 10.0.2.1
+  Advertising Router: 10.0.2.1
+  LS Seq Number: 80000003
+  Checksum: 0x468E
+  Length: 48
+  Number of Links: 2
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.2.1
+     (Link Data) Router Interface address: 10.0.2.1
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.1.1
+     (Link Data) Router Interface address: 10.0.1.1
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+
+  LS age: 252
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 10.0.3.2
+  Advertising Router: 10.0.3.2
+  LS Seq Number: 80000003
+  Checksum: 0xBE0B
+  Length: 48
+  Number of Links: 2
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.2.1
+     (Link Data) Router Interface address: 10.0.2.2
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.3.2
+     (Link Data) Router Interface address: 10.0.3.2
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+
+  LS age: 218
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 10.0.3.33
+  Advertising Router: 10.0.3.33
+  LS Seq Number: 80000002
+  Checksum: 0x59F6
+  Length: 48
+  Number of Links: 2
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.3.2
+     (Link Data) Router Interface address: 10.0.3.33
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.1.1
+     (Link Data) Router Interface address: 10.0.1.33
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+
+  LS age: 202
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 10.0.4.3
+  Advertising Router: 10.0.4.3
+  LS Seq Number: 80000003
+  Checksum: 0x5B8
+  Length: 48
+  Number of Links: 2
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.4.3
+     (Link Data) Router Interface address: 10.0.4.3
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.3.2
+     (Link Data) Router Interface address: 10.0.3.3
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+
+  LS age: 208
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 10.0.4.4
+  Advertising Router: 10.0.4.4
+  LS Seq Number: 80000003
+  Checksum: 0xD8E3
+  Length: 48
+  Number of Links: 2
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.4.3
+     (Link Data) Router Interface address: 10.0.4.4
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.2.1
+     (Link Data) Router Interface address: 10.0.2.4
+      Number of TOS metrics: 0
+       TOS 0 Metrics: 1
+
+
+Router1#

@@ -1,0 +1,127 @@
+● Set 0 Introduction
+- distributed defination
+- types of systems
+	- parallel
+	- peer-to-peer
+	- realtime
+- examples of Today’s Platforms Landscape
+- Characterizing Distributed Systems
+- why distributed computing?
+- why distributed computing hard?
+- Types of Transparency
+- Types of Scalability
+- Design goals of a distributed system
+- Classifying Distributed Systems
+- Tyeps of Architectural Models
+	- Client-server
+	- Perr-to-Peer
+	- Multiple servers, proxy servers and caches, mobile code
+	- Parallel and Cluster Computing
+- Flynn’s Taxonomy for Parallel Computing
+	- SISD(uniprocessor, no parallelization), MISD(Fault Tolerance, space shuttle)
+	- SIMD(multiprocessors, array processor), MIMD(Distributed systems)
+
+- Communication in Distributed Systems
+	- synchronous, asynchronous
+	- reliable, unreliable
+	- examples of classifications.
+
+- Failure Models
+	- Fail-stop, Crash, Omission, Send-omission, receive-omission, byzantine
+
+● Set 1: Time in Distributed Systems
+- defination of time
+- Physical Clocks, Logical Clocks, Clock Synchronization
+- clock drift, skew, accuracry, precision
+- external synchronization
+	- cristian algorithm
+	- NTP
+- internal synchronization
+	- Berkeley UNIX algorithm
+	- Decentralized Averaging Algorithm
+- logical time
+	- defination
+	- causal relations
+- logical clocks types
+	- scalar clock - Lamport
+	- vector clock - Fidge, Mattern, Schmuck
+	- matrix clock
+
+● Set 1 Global State
+	- why global state
+	- chandy lamport - assumes FIFO
+	- consistent cuts
+	- inconsistent cuts
+	- state of process
+	- Spezialetti-Kerns
+	- Lai-Yang Algorithm- NON FIFO red-white messages
+	- Mattern’s Algorithm - NON FIFO vectors clocks
+
+● Part 2: From Operating Systems to Distributed Systems
+- multiprocessors
+	- tightly coupled, shared memory
+- multicomputers
+	- loosely coupled, private memory, autonomous
+- distributed OS types
+	- mutlprocessor OS
+	- Network OS
+	- Distributed OS
+- Transparency and performance
+- RPC(Remote Procedure Call)
+	- At most once, At least once semantics
+- DSM
+- mutual exclusion
+	- non-token based: central coordinator, Ricart-agrawala
+	- token based: token ring, Ricart-Agrawala Second algo
+	- quorom based: Maekawas's algo -- voting sets
+- leader election
+	- ring based
+	- bully algorithm
+- distributed deadlocks
+	- assumptions
+	- conditions
+	- deadlock detection (path-pushing)
+		- centralized
+			- phantom deadlock
+		- chandy-mishra-haas (Edge-chasing)
+	- deadlock prevention
+		- Wait die
+		- wound wait
+- load balancing
+- process migrations
+	- MOSIX
+- Distributed File Systems
+	- remote access model
+	- download/upload model
+- semantics - file sharing
+	- one-copy
+	- sessoinn semtacis
+	- serializable
+- Network file system: Sun-NFS
+- Anderw file system
+- Conda file systems
+
+
+
+○ Architectural Possibilities, Communication Primitives (Distributed Shared
+Memory, Remote Procedure Calls)
+○ Distributed Coordination (mutual exclusion, leader election, deadlocks)
+○ Scheduling and Load Balancing in distributed systems
+○ Distributed Storage and FileSystems
+
+● Part 3: Messaging and Communication in Distributed Systems
+- properties of Message oriented Middleware(MOM)
+- Group Communication
+	- types
+- Single-Source FIFO
+- Causal ordering
+- total ordering
+- failure models: assumptions
+- GC Properties
+	- atomic mutlicast, failure atomicity, uniformity, liveness
+
+○ ALM. Mesh/Tree Protocols, Group Communication, Distributed
+Publish/Subscribe
+● Part 4: Reliability and Fault Tolerance in Distributed Systems
+○ Fault Tolerance, Consensus, Failure Detection, Replication, Handling
+Byzantine Failures

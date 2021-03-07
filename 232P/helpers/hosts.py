@@ -136,6 +136,47 @@ def add_arp_entry(interface, destination, mac):
 # ping6 -c2 IPv6_address_of_PC1
 # traceroute6 IPv6_address_of_PC1
 
+# OR sudo cat /etc/quagga/ripd.conf
+def get_zebra_password():
+    return f"sudo cat /etc/quagga/ospfd.conf"
+
+# https://learningnetwork.cisco.com/s/question/0D53i00000Kt6cX/rip-timers
+def setup_rip(network, prefix, interface):
+    return f"""
+sudo service zebra restart
+sudo service ripd restart
+telnet localhost 2602
+zebra
+enable
+config term
+router rip
+version 2
+network {network}/{prefix}
+passive-interface {getInterface(interface)}
+end
+show ip rip
+exit
+netstat -rn
+"""
+
+def setup_ospf(network, prefix, interface, area=1):
+    return f"""
+sudo service zebra restart
+sudo service ospfd restart
+telnet localhost 2604
+zebra
+enable
+config term
+router ospf
+network {network}/{prefix} area {area}
+no passive-interface {getInterface(interface)}
+end
+show ip ospf interface
+show ip ospf
+exit
+netstat -rn
+"""
+
 if __name__ == "__main__":
     # lab 3
     # PC1
@@ -196,8 +237,8 @@ if __name__ == "__main__":
     # print(add_default_route_ip4("10.0.3.2"))
     
     # PC1
-    print(set_interface("e0", "66.45.1.11", "24"))
-    print(add_default_route_ip4("66.45.1.1"))
+    # print(set_interface("e0", "66.45.1.11", "24"))
+    # print(add_default_route_ip4("66.45.1.1"))
 
 
     # # PC2
@@ -208,3 +249,25 @@ if __name__ == "__main__":
     # # PC3
     # print(set_interface("e0", "66.45.3.33", "24"))
     # print(add_default_route_ip4("66.45.3.2"))
+
+    # LAB4
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    # print(add_default_route_ip4("10.0.1.1"))
+    
+    # print(set_interface("e0", "10.0.4.44", "24"))
+    # print(add_default_route_ip4("10.0.4.3"))
+    # print(setup_rip("10.0.0.0", "8", "e0"))
+    # print(setup_ospf("10.0.0.0", "8", "e0"))
+
+    # BGP
+    # PC1
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    # print(add_default_route_ip4("10.0.1.1"))
+
+    # PC2
+    # print(set_interface("e0", "10.0.2.22", "24"))
+    # print(add_default_route_ip4("10.0.2.2"))
+
+    # PC4
+    # print(set_interface("e0", "10.0.4.44", "24"))
+    # print(add_default_route_ip4("10.0.4.4"))

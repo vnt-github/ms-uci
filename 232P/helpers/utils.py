@@ -27,9 +27,10 @@ def calcDottedNetmask(mask):
         bits |= (1 << i)
     return inet_ntoa(pack('>I', bits))
 
-def getMask(cidr_prefix):
+def getMask(cidr_prefix, reversed=False):
     if isinstance(cidr_prefix, int) or cidr_prefix.isdigit():
         mask = calcDottedNetmask(cidr_prefix)
+        if reversed: mask = '.'.join(map(lambda x: str(255-int(x)), mask.split(".")))
     return mask
 
 def mac2ipv6(mac):

@@ -1,0 +1,4 @@
+- lab 4
+    - why the rip has not subnet, why is 10.0.0.0 is subnetted with 24
+    - 2b2 2. Show how the information in the LSDB of Router1 (from Step 4) can be used to construct parts of the network topology from Figure 4.3, including the Cisco routers, networks that connect two or more Cisco routers, and networks that connect to only one Cisco router
+    - 2b2 3. Explain how Router1 can use the information of its LSDB to create routing table entries displayed in Step 5. 
