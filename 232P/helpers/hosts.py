@@ -114,10 +114,10 @@ def traceroute(destination):
     return f"""traceroute {destination}"""
 
 def get_all_matches(destination):
-    return f"ip route show to match {destination}"
+    return f"sudo ip route show to match {destination}"
 
 def get_match(destination):
-    return f"ip route get {destination}"
+    return f"sudo ip route get {destination}"
 
 
 def show_arp_cache():
@@ -131,7 +131,11 @@ sudo sysctl -a | grep accept_redirects
 
 # ip neigh add 192.128.1.1 lladdr 1:2:3:4:5:2 dev eth1
 def add_arp_entry(interface, destination, mac):
-    return f"ip neigh add {destination} lladdr {mac} dev {getInterface(interface)}"
+    return f"sudo ip neigh add {destination} lladdr {mac} dev {getInterface(interface)}"
+
+# ip neigh add 192.128.1.1 lladdr 1:2:3:4:5:2 dev eth1
+def del_arp_entry(interface, destination, mac):
+    return f"sudo ip neigh del {destination} lladdr {mac} dev {getInterface(interface)}"
 
 # ping6 -c2 IPv6_address_of_PC1
 # traceroute6 IPv6_address_of_PC1
@@ -176,6 +180,33 @@ show ip ospf
 exit
 netstat -rn
 """
+
+def disable_ip6():
+    return f"""
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+"""
+
+def disable_sack():
+    return f'sudo sysctl -w net.ipv4.tcp_sack=0'
+
+def set_mtu(interface, value):
+    return f"sudo ip link set dev {getInterface(interface)} mtu {value}"
+
+def send_data(bytessize, destination, u='', v=''):
+    return "(rm -rf a.txt) && (for i in {0.." + str(bytessize) + "}" + f"; do echo -n 'a' >> a.txt; done;) && (cat a.txt | nc {u} {v} -p 10086 {destination} 10086)"
+
+def disable_tcp_options():
+    return f"""
+sudo sysctl -w net.ipv4.tcp_timestamps=0
+sudo sysctl -w net.ipv4.tcp_sack=0
+"""
+
+def enable_mtu_path_discover():
+    return "sysctl -w net.ipv4.tcp_mtu_probing=2"
+
+def set_mtu_expiers(seconds):
+    return f"sudo sysctl -w net.ipv6.route.mtu_expires={seconds}"
 
 if __name__ == "__main__":
     # lab 3
@@ -251,12 +282,22 @@ if __name__ == "__main__":
     # print(add_default_route_ip4("66.45.3.2"))
 
     # LAB4
+    # PC1
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:11"))
     # print(set_interface("e0", "10.0.1.11", "24"))
-    # print(add_default_route_ip4("10.0.1.1"))
     
+    # PC4
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:44"))
     # print(set_interface("e0", "10.0.4.44", "24"))
+    
+    # RIP
+    # PC1
+    # print(add_default_route_ip4("10.0.1.1"))
     # print(add_default_route_ip4("10.0.4.3"))
+    # PC4
     # print(setup_rip("10.0.0.0", "8", "e0"))
+    
+    # OSPF
     # print(setup_ospf("10.0.0.0", "8", "e0"))
 
     # BGP
@@ -271,3 +312,74 @@ if __name__ == "__main__":
     # PC4
     # print(set_interface("e0", "10.0.4.44", "24"))
     # print(add_default_route_ip4("10.0.4.4"))
+
+    # LAB 5
+    # # PC2
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:22"))
+    # print(set_interface("e0", "10.0.1.22", "24"))
+    # print(disable_ip6())
+
+    # # PC1
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:11"))
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    # print(disable_ip6())
+    # print(flush_arp_cache())
+    # print(add_arp_entry("e0", "10.0.1.33", "aa:bb:cc:dd:ee:33"))
+    # print(add_arp_entry("e0", "10.0.1.44", "aa:bb:cc:dd:ee:44"))
+
+    # # PC3
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:33"))
+    # print(set_interface("e0", "10.0.1.33", "24"))
+    # print(disable_ip6())
+    # print(flush_arp_cache())
+    # print(add_arp_entry("e0", "10.0.1.11", "aa:bb:cc:dd:ee:11"))
+    # print(add_arp_entry("e0", "10.0.1.44", "aa:bb:cc:dd:ee:44"))
+
+    # # PC4
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:44"))
+    # print(set_interface("e0", "10.0.1.44", "24"))
+    # print(disable_ip6())
+    # print(flush_arp_cache())
+    # print(add_arp_entry("e0", "10.0.1.11", "aa:bb:cc:dd:ee:11"))
+    # print(add_arp_entry("e0", "10.0.1.33", "aa:bb:cc:dd:ee:33"))
+    
+
+    # lAB 5 5-a
+    # # PC1
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:11"))
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    # print(add_default_route_ip4("10.0.1.2"))
+    # print(disable_ip6())
+
+    # PC2
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:22"))
+    # print(set_interface("e0", "10.0.3.22", "24"))
+    # print(add_default_route_ip4("10.0.3.2"))
+    # print(disable_ip6())
+
+    # PC3
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:33"))
+    # print(set_interface("e0", "10.0.4.33", "24"))
+    # print(add_default_route_ip4("10.0.4.3"))
+    # print(disable_ip6())
+
+    # PC4
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:44"))
+    # print(set_interface("e0", "10.0.4.44", "16"))
+    # print(add_default_route_ip4("10.0.4.3"))
+    # print(disable_ip6())
+
+    # LAB6
+    # # PC1
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    # print(add_default_route_ip4("10.0.1.1"))
+    # print(disable_sack())
+
+    # # PC2
+    print(set_interface("e0", "10.0.3.33", "24"))
+    print(add_default_route_ip4("10.0.3.1"))
+    print(disable_sack())
+
+    # print(disable_tcp_options())
+    # print(set_mtu_expiers(60))
+    # print(send_data(800, "fd01:2345:6789:3:143c:40ff:fe03:b4bf", "-u", "-6"))

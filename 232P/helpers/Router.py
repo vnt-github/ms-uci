@@ -15,7 +15,7 @@ def show_interface_ip4():
 def show_interface_ip6():
     return f"show ipv6 interface brief"
 
-def disable_cdp():
+def disable_cdp_loop():
     return f"""
 config term
 no cdp run
@@ -163,6 +163,18 @@ ip proxy-arp
 end
 """
 
+def disable_proxy_arp(interfaces):
+    interfaces_cmmd = ''.join([f"""
+interface {getInterface(interface)}
+no ip proxy-arp
+""" for interface in interfaces])
+
+    return f"""
+config term
+{interfaces_cmmd}
+end
+"""
+
 def show_route_cache():
     return f"""show ip cache"""
 
@@ -173,8 +185,8 @@ end
 show ip route
 """
 def add_default_route_ip4(next_router_ip):
+# {enable_routing_cache()}
     return f"""
-{enable_routing_cache()}
 config term
 ip route 0.0.0.0 0.0.0.0 {next_router_ip}
 end
@@ -405,20 +417,100 @@ timers bgp {keep_alive} {hold_time}
 end
 """
 
-def setup_bgp(as_id, network, mask, neighbors=[]):
+def setup_bgp(as_id, adv_networks, neighbors):
     neighbors_add_commands = '\n'.join([f'neighbor {ip} remote-as {as_id}'  for ip, as_id in neighbors])
+    next_hop_self = '\n'.join([f'neighbor {ip} next-hop-self'  for ip, as_id in neighbors])
+    network_adv_commands = '\n'.join([f'network {network} mask {getMask(mask)}' for network, mask in adv_networks])
     return f"""
 config term
 router bgp {as_id}
 {neighbors_add_commands}
-network {network} mask {getMask(mask)}
+{next_hop_self}
+{network_adv_commands}
 end
-clear ip bgp *
 show ip bgp summary
 """
 
+def show_bgp_session_to_peers():
+    return "show ip bgp summary"
+
+def show_mac_table(group=1):
+    return f"show bridge {group}"
+
+def show_spanning_tree():
+    return f"show spanning-tree"
+
+def disable_bridge(group=1):
+    return f"""
+config term
+no bridge {group}
+end"""
+
+def flush_mac_table():
+    return f"clear bridge"
+
+def flush_arp_cache():
+    return f"clear arp-cache"
+
+
+
+# Router1# configure terminal
+# Router1(config)# no ip routing 
+# Router1(config)# no cdp run
+# Router1(config)# bridge 1 protocol ieee
+# Router1(config)# bridge 1 priority 128
+# Router1(config)# interface FastEthernet0/0
+# Router1(config-if)# no keepalive
+# Router1(config-if)# bridge-group 1
+# Router1(config-if)# bridge-group 1 spanning-disabled
+# Router1(config-if)# no shutdown
+# Router1(config-if)# interface FastEthernet1/0
+# Router1(config-if)# no keepalive
+# Router1(config-if)# bridge-group 1
+# Router1(config-if)# bridge-group 1 spanning-disabled
+# Router1(config-if)# no shutdown
+# Router1(config-if)# end
+# Router1# clear bridge
+# Router1# clear arp-cache
+def setup_bridge(interfaces, group=1, priority=128, spanning_tree=True):
+    interface_commands = ''.join([f"""
+interface {getInterface(each)}
+no keepalive
+bridge-group {group}
+{"no" if spanning_tree else ''} bridge-group {group} spanning-disabled
+no shutdown    
+""" for each in interfaces])
+
+    return f"""
+config term
+no ip routing
+no cdp run
+bridge {group} protocol ieee
+bridge {group} priority {priority}
+{interface_commands}
+end
+clear bridge
+clear arp-cache
+"""
+
+def make_bridge_root(group=1, lowest_priority=4):
+    return f"""
+config term
+bridge {group} priority {lowest_priority}
+end
+"""
+
+def set_interface_mtu(interface, size):
+    return f"""
+config term
+interface {getInterface(interface)}
+mtu {size}
+end
+show interfaces
+"""
+
 if __name__ == "__main__":
-    # print(disable_cdp())
+    # print(disable_cdp_loop())
     # print(set_interface_ip4("s0", "10.0.1.1", 24))
     # print(set_interface_ip4("eth0", "10.0.1.1", 24))
 
@@ -531,7 +623,9 @@ if __name__ == "__main__":
     # R1
     # print(set_interface_ip4("e0", "10.0.1.1", "24"))
     # print(set_interface_ip4("e1", "10.0.10.1", "24"))
-    # print(setup_bgp(100, "10.0.1.0", "24", [
+    # print(setup_bgp(100, [
+    #     ("10.0.1.0", 24)
+    # ], [
     #     ("10.0.10.2", 200),
     #     ("10.0.10.33", 300),
     # ]))
@@ -539,7 +633,9 @@ if __name__ == "__main__":
     # R2
     # print(set_interface_ip4("e0", "10.0.2.2", "24"))
     # print(set_interface_ip4("e1", "10.0.10.2", "24"))
-    # print(setup_bgp(200, "10.0.2.0", "24", [
+    # print(setup_bgp(200, [
+    #     ("10.0.2.0", 24)
+    # ], [
     #     ("10.0.10.1", 100),
     #     ("10.0.10.33", 300),
     # ]))
@@ -547,17 +643,86 @@ if __name__ == "__main__":
     # R3
     # print(set_interface_ip4("e0", "10.0.3.3", "24"))
     # print(set_interface_ip4("e1", "10.0.20.3", "24"))
-    # print(setup_bgp(300, "10.0.3.0", "24", [
+    # print(setup_bgp(300, [
+    #     ("10.0.4.0", 24)
+    # ], [
     #     ("10.0.20.4", 400),
     # ]))
 
     # R4
-    print(set_interface_ip4("e0", "10.0.4.4", "24"))
-    print(set_interface_ip4("e1", "10.0.20.4", "24"))
-    print(setup_bgp(400, "10.0.4.0", "24", [
-        ("10.0.20.3", 300),
-    ]))
+    # print(set_interface_ip4("e0", "10.0.4.4", "24"))
+    # print(set_interface_ip4("e1", "10.0.20.4", "24"))
+    # print(setup_bgp(400, [
+    #     ("10.0.4.0", 24)
+    # ], [
+    #     ("10.0.20.3", 300),
+    # ]))
 
     # R5
     # print(set_interface_ip4("e0", "10.0.3.33", "24"))
     # print(set_interface_ip4("e1", "10.0.10.33", "24"))
+    # print(setup_bgp(300, [
+    #     ("10.0.1.0", 24),
+    #     ("10.0.2.0", 24),
+    # ], [
+    #     ("10.0.10.1", 100),
+    #     ("10.0.10.2", 200)
+    # ]))
+    
+    # R5 iBGP
+    # print(setup_bgp(300, [], [
+    #     ("10.0.3.3", 300)
+    # ]))
+    
+    # R3 iBGP
+    # print(setup_bgp(300, [], [
+    #     ("10.0.3.33", 300)
+    # ]))
+
+    #  LAB 5
+    # R1 & R4
+    # print(setup_bridge(["e0", "e1"]))
+
+    # R2
+    # print(set_interface_ip4("e0", "10.0.3.2", "24"))
+    # print(set_interface_ip4("e1", "10.0.1.2", "24"))
+    # print(add_default_route_ip4("10.0.3.3"))
+    # print(disable_proxy_arp(["e0", "e1"]))
+
+    # # R3
+    # print(set_interface_ip4("e0", "10.0.3.3", "24"))
+    # print(set_interface_ip4("e1", "10.0.4.3", "24"))
+    # print(add_default_route_ip4("10.0.3.2"))
+    # print(disable_proxy_arp(["e0", "e1"]))
+
+    # LAB 6
+    # # R1
+    # print(set_interface_ip4("e0", "10.0.1.1", "24"))
+    # print(set_interface_ip4("s0", "10.0.2.1", "24"))
+    # print(add_default_route_ip4("10.0.2.2"))
+    # print(disable_cdp_loop())
+
+    # # R2
+    print(set_interface_ip4("e0", "10.0.3.1", "24"))
+    print(set_interface_ip4("s0", "10.0.2.2", "24"))
+    print(add_default_route_ip4("10.0.2.1"))
+    print(disable_cdp_loop())
+
+    # R1
+    # print(set_interface_ip6("e0", "fd01:2345:6789:1::1", "64"))
+    # print(set_interface_ip6("s0", "fd01:2345:6789:2::1", "64"))
+    # print(add_default_route_ip6("e0", "fd01:2345:6789:2::2"))
+    # print(add_default_route_ip6("s0", "fd01:2345:6789:2::2"))
+    # print(disable_cdp_loop())
+    # print(set_interface_mtu("s0", 1280))
+
+    # R2
+    # print(set_interface_ip6("e0", "fd01:2345:6789:3::1", "64"))
+    # print(set_interface_ip6("s0", "fd01:2345:6789:2::2", "64"))
+    # print(add_default_route_ip6("e0", "fd01:2345:6789:2::1"))
+    # print(add_default_route_ip6("s0", "fd01:2345:6789:2::1"))
+    # print(disable_cdp_loop())
+    # print(set_interface_mtu("s0", 1280))
+
+
+    
