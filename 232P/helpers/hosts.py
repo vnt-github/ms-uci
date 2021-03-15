@@ -83,7 +83,7 @@ sudo ip route del {destination_ntw}
 {flush_route_cache()}
 """
 
-def del_interface_static_routes(interface):
+def flush_interface_routes(interface):
     return f"""
 sudo ip link set dev {getInterface(interface)} down
 sudo ip link set dev {getInterface(interface)} up
@@ -217,7 +217,7 @@ sudo sysctl -w net.ipv4.tcp_sack=0
 def enable_mtu_path_discover():
     return "sysctl -w net.ipv4.tcp_mtu_probing=2"
 
-def set_mtu_expiers(seconds):
+def set_mtu_expires(seconds):
     return f"sudo sysctl -w net.ipv6.route.mtu_expires={seconds}"
 
 if __name__ == "__main__":
@@ -259,7 +259,7 @@ if __name__ == "__main__":
     # print(add_default_route_ip4("10.0.3.1"))
     # print(set_icmp_redirects())
 
-    # print(del_interface_static_routes("e0"))
+    # print(flush_interface_routes("e0"))
 
     # PC4
     # print(set_interface("e0", "10.0.2.139", "24"))
@@ -410,7 +410,7 @@ if __name__ == "__main__":
     # print(set_mtu("e0", 700))
 
     # print(disable_tcp_options())
-    # print(set_mtu_expiers(60))
+    # print(set_mtu_expires(60))
     # print(send_data(800, "fd01:2345:6789:3:143c:40ff:fe03:b4bf", udp=True, ipv6=True))
     
     # print(setup_nc_server(udp=True))

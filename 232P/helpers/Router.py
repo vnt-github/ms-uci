@@ -389,7 +389,7 @@ end
 """
 
 # NOTE: id can only be a valid ipv4 address
-def ospf_router_id(id, area=1):
+def set_ospf_router_id(id, area=1):
     return f"""
 config term
 router ospf {area}
@@ -800,5 +800,5 @@ if __name__ == "__main__":
     # print(set_interface_mtu("s0", 1280))
 
     # print(ospf_active("e0"))
-    # print(ospf_router_id("1.2.3.4"))
+    # print(set_ospf_router_id("1.2.3.4"))
     # print(set_data_rate("s0", 1200))
