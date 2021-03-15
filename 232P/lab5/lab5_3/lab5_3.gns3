@@ -22,8 +22,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"104\" width=\"163\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\nroot\ndesignated root\ndesignated bridge\ndesignated path cost: 0\nroot path cost: 0</text></svg>",
-                "x": 291,
-                "y": -25,
+                "x": 294,
+                "y": 184,
                 "z": 2
             },
             {
@@ -31,8 +31,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"56\" width=\"163\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\ndesignated path cost: 0\nroot path cost: 0</text></svg>",
-                "x": 346,
-                "y": -160,
+                "x": 349,
+                "y": 49,
                 "z": 2
             },
             {
@@ -40,8 +40,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"88\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\nroot port\ndesignated bridge: R1 e0\ndesignated path cost: 0\nroot path cost: 19</text></svg>",
-                "x": 40,
-                "y": -142,
+                "x": 43,
+                "y": 67,
                 "z": 2
             },
             {
@@ -49,8 +49,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"72\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\ndesignated bridge\ndesignated path cost: 19\nroot path cost: 19</text></svg>",
-                "x": -45,
-                "y": -215,
+                "x": -41,
+                "y": -5,
                 "z": 2
             },
             {
@@ -58,8 +58,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"88\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\nroot port\ndesignated bridge: R2 e0\ndesignated pth cost: 19\nroot path cost: 38</text></svg>",
-                "x": -536,
-                "y": -161,
+                "x": -532,
+                "y": 48,
                 "z": 2
             },
             {
@@ -67,8 +67,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"24\" width=\"57\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">blocked</text></svg>",
-                "x": -435,
-                "y": -53,
+                "x": -431,
+                "y": 156,
                 "z": 2
             },
             {
@@ -76,8 +76,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"56\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">designated bridge: R4 e0\ndesignated path cost: 19\nroot path cost :38</text></svg>",
-                "x": -539,
-                "y": -29,
+                "x": -535,
+                "y": 180,
                 "z": 2
             },
             {
@@ -85,8 +85,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"88\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\nroot port\ndesignated bridge: R1 e0\ndesianged path cost: 0\nroot path cost: 19</text></svg>",
-                "x": 7,
-                "y": 162,
+                "x": 10,
+                "y": 371,
                 "z": 2
             },
             {
@@ -94,8 +94,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"72\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\ndesignated bridge\ndesignated path cost: 19\nroot path cost: 19</text></svg>",
-                "x": -173,
-                "y": 172,
+                "x": -169,
+                "y": 381,
                 "z": 2
             },
             {
@@ -103,8 +103,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"72\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">blocked\ndesignated bridge: R2 e0\ndesignated path cost: 19\nroot path cost: 19</text></svg>",
-                "x": -213,
-                "y": -458,
+                "x": -209,
+                "y": -248,
                 "z": 2
             },
             {
@@ -112,8 +112,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"88\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\nroot port\ndesignated bridge: R1 e0\ndesignateed path cost: 0\nroot path cost: 19</text></svg>",
-                "x": 18,
-                "y": -465,
+                "x": 21,
+                "y": -255,
                 "z": 2
             },
             {
@@ -121,8 +121,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"24\" width=\"217\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">EACH HAVE PORT PATH COST: 19</text></svg>",
-                "x": -112,
-                "y": -611,
+                "x": -108,
+                "y": -401,
                 "z": 2
             },
             {
@@ -130,8 +130,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"200\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"200\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": 295,
-                "y": -361,
+                "x": 298,
+                "y": -151,
                 "z": 1
             },
             {
@@ -139,8 +139,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"200\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"200\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": 30,
-                "y": -364,
+                "x": 33,
+                "y": -154,
                 "z": 1
             },
             {
@@ -148,8 +148,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"142\" width=\"0\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"142\" /></svg>",
-                "x": 285,
-                "y": -278,
+                "x": 288,
+                "y": -68,
                 "z": 1
             },
             {
@@ -157,8 +157,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"153\" width=\"182\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"182\" y1=\"0\" y2=\"153\" /></svg>",
-                "x": -10,
-                "y": -36,
+                "x": -6,
+                "y": 173,
                 "z": 1
             },
             {
@@ -166,8 +166,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"167\" width=\"3\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"-3\" y1=\"0\" y2=\"167\" /></svg>",
-                "x": 288,
-                "y": -60,
+                "x": 291,
+                "y": 149,
                 "z": 1
             },
             {
@@ -175,8 +175,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"177\" width=\"203\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"203\" y1=\"0\" y2=\"177\" /></svg>",
-                "x": -288,
-                "y": -264,
+                "x": -284,
+                "y": -54,
                 "z": 1
             },
             {
@@ -184,8 +184,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"155\" width=\"0\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"155\" /></svg>",
-                "x": -365,
-                "y": -290,
+                "x": -361,
+                "y": -80,
                 "z": 1
             },
             {
@@ -193,8 +193,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"200\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"200\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": 300,
-                "y": 110,
+                "x": 303,
+                "y": 319,
                 "z": 1
             },
             {
@@ -202,8 +202,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"200\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"200\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": -278,
-                "y": 109,
+                "x": -274,
+                "y": 318,
                 "z": 1
             },
             {
@@ -211,8 +211,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"200\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"200\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": 5,
-                "y": 119,
+                "x": 8,
+                "y": 328,
                 "z": 1
             },
             {
@@ -220,8 +220,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"200\"><line stroke=\"#000000\" stroke-dasharray=\"25, 25\" stroke-width=\"2\" x1=\"0\" x2=\"200\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": -545,
-                "y": 113,
+                "x": -541,
+                "y": 322,
                 "z": 1
             },
             {
@@ -229,8 +229,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"88\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\nroot port\ndesignated bridge: R2 e0\ndesignated path cost: 19\nroot path cost: 38</text></svg>",
-                "x": -210,
-                "y": -557,
+                "x": -206,
+                "y": -347,
                 "z": 2
             },
             {
@@ -238,8 +238,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"72\" width=\"171\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">forwarding\ndesignated bridge\ndesignated path cost: 38\nroo path cost: 38</text></svg>",
-                "x": 20,
-                "y": -553,
+                "x": 23,
+                "y": -343,
                 "z": 2
             },
             {
@@ -247,8 +247,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"0\" width=\"235\"><line stroke=\"#5500ff\" stroke-width=\"2\" x1=\"0\" x2=\"235\" y1=\"0\" y2=\"0\" /></svg>",
-                "x": -269,
-                "y": -460,
+                "x": -265,
+                "y": -250,
                 "z": 1
             },
             {
@@ -256,8 +256,8 @@
                 "locked": false,
                 "rotation": 0,
                 "svg": "<svg height=\"138\" width=\"1\"><line stroke=\"#aa0000\" stroke-width=\"2\" x1=\"0\" x2=\"1\" y1=\"0\" y2=\"138\" /></svg>",
-                "x": 324,
-                "y": -282,
+                "x": 327,
+                "y": -72,
                 "z": 1
             }
         ],
@@ -481,68 +481,6 @@
             },
             {
                 "filters": {},
-                "link_id": "a9d65e4e-08fc-4bf2-8402-5e2b8f35204c",
-                "nodes": [
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "f0/0",
-                            "x": 33,
-                            "y": -18
-                        },
-                        "node_id": "ff6ff0e0-caed-4f73-bb7c-665f31c246d9",
-                        "port_number": 0
-                    },
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "e1",
-                            "x": 36,
-                            "y": 56
-                        },
-                        "node_id": "0e2f25b9-25b5-4bea-aa29-b5d23b651a67",
-                        "port_number": 1
-                    }
-                ],
-                "suspend": false
-            },
-            {
-                "filters": {},
-                "link_id": "11fe7d76-d9de-4c31-a0d7-ae9674fe4ebf",
-                "nodes": [
-                    {
-                        "adapter_number": 1,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "f1/0",
-                            "x": 32,
-                            "y": 61
-                        },
-                        "node_id": "ff6ff0e0-caed-4f73-bb7c-665f31c246d9",
-                        "port_number": 0
-                    },
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "e0",
-                            "x": 36,
-                            "y": -23
-                        },
-                        "node_id": "9578d269-0ead-4372-9c67-2e120fd68c75",
-                        "port_number": 0
-                    }
-                ],
-                "suspend": false
-            },
-            {
-                "filters": {},
                 "link_id": "92048be4-4606-43d0-952f-5a09f7ec9cfb",
                 "nodes": [
                     {
@@ -664,6 +602,68 @@
                     }
                 ],
                 "suspend": false
+            },
+            {
+                "filters": {},
+                "link_id": "4f879d7a-32f9-4484-8723-35d2e5d63a76",
+                "nodes": [
+                    {
+                        "adapter_number": 1,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "f1/0",
+                            "x": 32,
+                            "y": 61
+                        },
+                        "node_id": "ff6ff0e0-caed-4f73-bb7c-665f31c246d9",
+                        "port_number": 0
+                    },
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "e0",
+                            "x": 36,
+                            "y": -23
+                        },
+                        "node_id": "9578d269-0ead-4372-9c67-2e120fd68c75",
+                        "port_number": 0
+                    }
+                ],
+                "suspend": false
+            },
+            {
+                "filters": {},
+                "link_id": "57896d02-eb52-4b15-8e3e-079cf5e040e8",
+                "nodes": [
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "e1",
+                            "x": 36,
+                            "y": 55
+                        },
+                        "node_id": "0e2f25b9-25b5-4bea-aa29-b5d23b651a67",
+                        "port_number": 1
+                    },
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "f0/0",
+                            "x": 32,
+                            "y": -17
+                        },
+                        "node_id": "ff6ff0e0-caed-4f73-bb7c-665f31c246d9",
+                        "port_number": 0
+                    }
+                ],
+                "suspend": false
             }
         ],
         "nodes": [
@@ -694,7 +694,7 @@
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "2fe1aee3be06103b7e2da79190a6257ca720ef5fc5d824408b8ef092af612c6c",
+                    "container_id": "b8f780fb8a8d8bf5eca5e5c137a2edaced18dce37b210499da868d70cafe4b30",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -705,8 +705,8 @@
                 "symbol": "docker_guest.svg",
                 "template_id": "b8e12f55-7f48-4f8f-84e1-b41484d78e43",
                 "width": 65,
-                "x": 512,
-                "y": -352,
+                "x": 514,
+                "y": -141,
                 "z": 1
             },
             {
@@ -769,8 +769,8 @@
                 "symbol": ":/symbols/hub.svg",
                 "template_id": "b4503ea9-d6b6-3695-9fe4-1db3b39290b0",
                 "width": 72,
-                "x": 211,
-                "y": -339,
+                "x": 213,
+                "y": -128,
                 "z": 1
             },
             {
@@ -825,8 +825,8 @@
                 "symbol": ":/symbols/router.svg",
                 "template_id": "e9e48e4a-1acf-4675-be19-537548d9b36f",
                 "width": 66,
-                "x": 218,
-                "y": -103,
+                "x": 220,
+                "y": 106,
                 "z": 1
             },
             {
@@ -889,8 +889,8 @@
                 "symbol": ":/symbols/hub.svg",
                 "template_id": "b4503ea9-d6b6-3695-9fe4-1db3b39290b0",
                 "width": 72,
-                "x": 210,
-                "y": 120,
+                "x": 212,
+                "y": 329,
                 "z": 1
             },
             {
@@ -920,7 +920,7 @@
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "952901352c5f74defd0f718b8e0b12c3a3d47f12c3de2b73eebc806eef96da7b",
+                    "container_id": "be5fe00d7a3bd386b875d68576de866bfc358907caf449696f390f7089161795",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -931,8 +931,8 @@
                 "symbol": "docker_guest.svg",
                 "template_id": "b8e12f55-7f48-4f8f-84e1-b41484d78e43",
                 "width": 65,
-                "x": 491,
-                "y": 106,
+                "x": 493,
+                "y": 315,
                 "z": 1
             },
             {
@@ -987,8 +987,8 @@
                 "symbol": ":/symbols/router.svg",
                 "template_id": "e9e48e4a-1acf-4675-be19-537548d9b36f",
                 "width": 66,
-                "x": -56,
-                "y": -105,
+                "x": -52,
+                "y": 104,
                 "z": 1
             },
             {
@@ -1051,8 +1051,8 @@
                 "symbol": ":/symbols/hub.svg",
                 "template_id": "b4503ea9-d6b6-3695-9fe4-1db3b39290b0",
                 "width": 72,
-                "x": -355,
-                "y": 120,
+                "x": -351,
+                "y": 329,
                 "z": 1
             },
             {
@@ -1082,7 +1082,7 @@
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "e16777c2288bcacf99ea89e9b11c7d05e4ba5cb9563c38e81f3ead4c72441cde",
+                    "container_id": "237d1b7abe0e7ca44dfc7ab601ab8749d891069567b629f365d1da4a41731943",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -1093,8 +1093,8 @@
                 "symbol": "docker_guest.svg",
                 "template_id": "b8e12f55-7f48-4f8f-84e1-b41484d78e43",
                 "width": 65,
-                "x": -609,
-                "y": 106,
+                "x": -605,
+                "y": 315,
                 "z": 1
             },
             {
@@ -1149,8 +1149,8 @@
                 "symbol": ":/symbols/router.svg",
                 "template_id": "e9e48e4a-1acf-4675-be19-537548d9b36f",
                 "width": 66,
-                "x": -349,
-                "y": -103,
+                "x": -345,
+                "y": 106,
                 "z": 1
             },
             {
@@ -1205,8 +1205,8 @@
                 "symbol": ":/symbols/router.svg",
                 "template_id": "e9e48e4a-1acf-4675-be19-537548d9b36f",
                 "width": 66,
-                "x": -66,
-                "y": 114,
+                "x": -62,
+                "y": 323,
                 "z": 1
             },
             {
@@ -1261,8 +1261,8 @@
                 "symbol": ":/symbols/router.svg",
                 "template_id": "e9e48e4a-1acf-4675-be19-537548d9b36f",
                 "width": 66,
-                "x": -58,
-                "y": -345,
+                "x": -54,
+                "y": -134,
                 "z": 1
             },
             {
@@ -1325,8 +1325,8 @@
                 "symbol": ":/symbols/hub.svg",
                 "template_id": "b4503ea9-d6b6-3695-9fe4-1db3b39290b0",
                 "width": 72,
-                "x": -356,
-                "y": -339,
+                "x": -352,
+                "y": -128,
                 "z": 1
             }
         ]

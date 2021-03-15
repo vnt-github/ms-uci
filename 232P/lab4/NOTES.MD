@@ -1,0 +1,5 @@
+- for RIP if configured with quagga then the new router added is reflected without icmp_redirect allow.
+- after shutdown R4 reaches 10.0.4.0/24 only after tracerouting to 10.0.4.0/23 from R1 R2 and R3, or after a long time.
+- OSPF if equal with path are present at interface then for consequetive traceroutes it'll choose between them may be differently in different tracerouters, even though the default route is set and/or netstat does'nt change.
+- designated router(DR) and (backup designated router)BDR have the highest and second higheset (priority, routerId) pair
+- https://networklessons.com/ospf/ospf-drbdr-election-explained

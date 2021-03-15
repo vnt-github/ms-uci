@@ -23,7 +23,7 @@
     - search this via keyword
 
 - ip forwarding
-    - mating the incomming interface/port to each incomming packet.
+    - matching the incomming interface/port to each incomming packet.
 
 - FastEthernet1/0 is port 0 of card in slot 1 of the router.
 

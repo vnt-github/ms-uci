@@ -125,7 +125,7 @@ def show_arp_cache():
 
 def set_icmp_redirects():
     return f"""
-sudo sysctl -w net.ip4.conf.all.accept_redirects=1
+sudo sysctl -w net.ipv4.conf.all.accept_redirects=1
 sudo sysctl -a | grep accept_redirects
 """
 
@@ -186,6 +186,11 @@ def disable_ip6():
 sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 """
+def enable_ip6():
+    return f"""
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
+"""
 
 def disable_sack():
     return f'sudo sysctl -w net.ipv4.tcp_sack=0'
@@ -193,9 +198,16 @@ def disable_sack():
 def set_mtu(interface, value):
     return f"sudo ip link set dev {getInterface(interface)} mtu {value}"
 
-def send_data(bytessize, destination, u='', v=''):
-    return "(rm -rf a.txt) && (for i in {0.." + str(bytessize) + "}" + f"; do echo -n 'a' >> a.txt; done;) && (cat a.txt | nc {u} {v} -p 10086 {destination} 10086)"
+def send_data(bytessize, destination, port=10086, udp=False, ipv6=False):
+    return f"""
+rm -rf a.txt
+for i in {{0..{bytessize}}}; do echo -n 'a' >> a.txt; done;
+cat a.txt | nc {'-u' if udp else ''} {'-6' if ipv6 else ''} {destination} {port}
+"""
+def setup_nc_server(port=10086, udp=False, ipv6=False):
+    return f"nc -l {'-u' if udp else ''} {'-6' if ipv6 else ''} {port}"
 
+# DONE TO REDUCE THE PACKET SIZE TO OBSERVE FRAGMENTATION, and prevent fragmentation due to larger headers.
 def disable_tcp_options():
     return f"""
 sudo sysctl -w net.ipv4.tcp_timestamps=0
@@ -237,14 +249,14 @@ if __name__ == "__main__":
     # print(add_default_route_ip4("10.0.1.2"))
 
     # PC2
-    # print(set_mac_addr("e0", "ce:2c:60:ec:d2:e2"))
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:02"))
     # print(set_interface("e0", "10.0.2.22", "24"))
-    # print(add_default_route_ip4("10.0.2.138"))
+    # print(add_default_route_ip4("10.0.2.2"))
     # print(set_icmp_redirects())
 
     # PC3
-    # print(set_interface("e0", "10.0.2.137", "29"))
-    # print(add_default_route_ip4("10.0.2.138"))
+    # print(set_interface("e0", "10.0.3.33", "24"))
+    # print(add_default_route_ip4("10.0.3.1"))
     # print(set_icmp_redirects())
 
     # print(del_interface_static_routes("e0"))
@@ -292,9 +304,21 @@ if __name__ == "__main__":
     
     # RIP
     # PC1
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:11"))
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    
+    # [x] ONLY USE if if host not passive RIP
+    # DOEST NOT UPDATE THE BETTER ROUTER EVEN ON ICMP_REDIRECT ENABLE
     # print(add_default_route_ip4("10.0.1.1"))
-    # print(add_default_route_ip4("10.0.4.3"))
+
     # PC4
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:44"))
+    # print(set_interface("e0", "10.0.4.44", "24"))
+    
+    # # [x]  ONLY USE if if host not passive RIP
+    # DOEST NOT UPDATE THE BETTER ROUTER EVEN ON ICMP_REDIRECT ENABLE
+    # print(add_default_route_ip4("10.0.4.3"))
+
     # print(setup_rip("10.0.0.0", "8", "e0"))
     
     # OSPF
@@ -302,18 +326,22 @@ if __name__ == "__main__":
 
     # BGP
     # PC1
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:11"))
     # print(set_interface("e0", "10.0.1.11", "24"))
     # print(add_default_route_ip4("10.0.1.1"))
 
     # PC2
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:22"))
     # print(set_interface("e0", "10.0.2.22", "24"))
     # print(add_default_route_ip4("10.0.2.2"))
 
     # PC4
+    # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:44"))
     # print(set_interface("e0", "10.0.4.44", "24"))
     # print(add_default_route_ip4("10.0.4.4"))
 
     # LAB 5
+    # PART 3
     # # PC2
     # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:22"))
     # print(set_interface("e0", "10.0.1.22", "24"))
@@ -349,24 +377,23 @@ if __name__ == "__main__":
     # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:11"))
     # print(set_interface("e0", "10.0.1.11", "24"))
     # print(add_default_route_ip4("10.0.1.2"))
-    # print(disable_ip6())
 
     # PC2
     # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:22"))
     # print(set_interface("e0", "10.0.3.22", "24"))
     # print(add_default_route_ip4("10.0.3.2"))
-    # print(disable_ip6())
+    # print(set_icmp_redirects())
 
     # PC3
     # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:33"))
     # print(set_interface("e0", "10.0.4.33", "24"))
     # print(add_default_route_ip4("10.0.4.3"))
-    # print(disable_ip6())
 
     # PC4
     # print(set_mac_addr("e0", "aa:bb:cc:dd:ee:44"))
     # print(set_interface("e0", "10.0.4.44", "16"))
     # print(add_default_route_ip4("10.0.4.3"))
+    
     # print(disable_ip6())
 
     # LAB6
@@ -376,10 +403,15 @@ if __name__ == "__main__":
     # print(disable_sack())
 
     # # PC2
-    print(set_interface("e0", "10.0.3.33", "24"))
-    print(add_default_route_ip4("10.0.3.1"))
-    print(disable_sack())
+    # print(set_interface("e0", "10.0.3.33", "24"))
+    # print(add_default_route_ip4("10.0.3.1"))
+    # print(disable_sack())
+
+    # print(set_mtu("e0", 700))
 
     # print(disable_tcp_options())
     # print(set_mtu_expiers(60))
-    # print(send_data(800, "fd01:2345:6789:3:143c:40ff:fe03:b4bf", "-u", "-6"))
+    # print(send_data(800, "fd01:2345:6789:3:143c:40ff:fe03:b4bf", udp=True, ipv6=True))
+    
+    # print(setup_nc_server(udp=True))
+    # print(send_data(1000000, "10.0.3.33"))

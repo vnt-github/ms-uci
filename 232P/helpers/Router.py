@@ -321,7 +321,7 @@ exit
 # THE SUBNET IS ALWAYS 24, use end 0s for subnets
 # https://learncisco.net/courses/icnd-1/ip-routing-technologies/enabling-rip.html
 # https://learningnetwork.cisco.com/s/question/0D53i00000Kt6cX/rip-timers
-def setup_rip(network, update_sec, invalid_sec, hold_sec, flush_sec):
+def setup_rip(network, update_sec='', invalid_sec='', hold_sec='', flush_sec=''):
     return f"""
 config term
 router rip
@@ -372,6 +372,30 @@ def show_ospf_netork_link_state():
 
 def show_ospf_router_link_state():
     return f"show ip ospf database router"
+
+def ospf_passive(interface):
+    return f"""
+config term
+passive-interface {getInterface(interface)}
+end
+"""
+
+def ospf_active(interface, area=1):
+    return f"""
+config term
+router ospf {area}
+no passive-interface {getInterface(interface)}
+end
+"""
+
+# NOTE: id can only be a valid ipv4 address
+def ospf_router_id(id, area=1):
+    return f"""
+config term
+router ospf {area}
+router-id {id}
+end
+"""
 
 # INVERT NET MASK http://saloperie.com/docs/mask.html
 # Router1# configure terminal
@@ -434,11 +458,36 @@ show ip bgp summary
 def show_bgp_session_to_peers():
     return "show ip bgp summary"
 
-def show_mac_table(group=1):
+def show_bridge_mac_table(group=1):
     return f"show bridge {group}"
 
 def show_spanning_tree():
     return f"show spanning-tree"
+
+
+# config term
+# ip prefix-list MYLIST permit 10.0.1.0/24
+# ip prefix-list MYLIST permit 10.0.3.0/24
+# router bgp 300
+# neighbor 10.0.10.1 prefix-list MYLIST in
+# neighbor 10.0.10.2 prefix-list MYLIST in
+# end
+# clear ip bgp *
+# show ip bgp
+# show ip route
+def bgp_selective_transit(allow_networks, to_apply_neigh_networks, as_id, list="MYLIST"):
+    alow_network_cmds = '\n'.join([f'ip prefix-list {list} permit {ntw}' for ntw in allow_networks])
+    apply_list_cmds = '\n'.join([f'neighbor {ntw} prefix-list {list} in' for ntw in to_apply_neigh_networks])
+    return f"""
+config term
+{alow_network_cmds}
+router bgp {as_id}
+{apply_list_cmds}
+end
+clear ip bgp *
+show ip bgp
+show ip route
+"""
 
 def disable_bridge(group=1):
     return f"""
@@ -446,12 +495,11 @@ config term
 no bridge {group}
 end"""
 
-def flush_mac_table():
+def flush_bridge_mac_table():
     return f"clear bridge"
 
 def flush_arp_cache():
     return f"clear arp-cache"
-
 
 
 # Router1# configure terminal
@@ -460,7 +508,7 @@ def flush_arp_cache():
 # Router1(config)# bridge 1 protocol ieee
 # Router1(config)# bridge 1 priority 128
 # Router1(config)# interface FastEthernet0/0
-# Router1(config-if)# no keepalive
+# Router1(config-if)# no keepalive # to stop LOOP cisco messages
 # Router1(config-if)# bridge-group 1
 # Router1(config-if)# bridge-group 1 spanning-disabled
 # Router1(config-if)# no shutdown
@@ -509,6 +557,15 @@ end
 show interfaces
 """
 
+# CAN'T BE SET FOR ETHERNETs but with SERIALS
+def set_data_rate(interface, rate_bps=1200):
+    return f"""
+config term
+interface {getInterface(interface)}
+clock rate {rate_bps}
+end
+"""
+
 if __name__ == "__main__":
     # print(disable_cdp_loop())
     # print(set_interface_ip4("s0", "10.0.1.1", 24))
@@ -517,11 +574,11 @@ if __name__ == "__main__":
     # print(set_interface_ip4("e0", "10.0.1.1", 24))
     # print(set_interface_ip4("s0", "10.0.1.1", "24"))
     # print(set_interface_ip4("e1", "10.0.1.1", "255.255.255.0"))
-    # print(add_route_ip4("10.3.1.0", 24, "10.2.1.0"))
+    # print(add_route_ip4("10.0.3.0", 24, "10.0.2.1"))
     # print(add_route_ip4("10.2.1.0", 24, "eth0"))
 
 
-    # lab3
+    # lab 3
     # both before
     # print(flush_arp_cache())
     # # ROUTER1
@@ -534,7 +591,7 @@ if __name__ == "__main__":
     # # # ROUTER2
     # print(set_interface_ip4("e0", "10.0.1.2", 24))
     # print(set_interface_ip4("e1", "10.0.2.2", 24))
-    # # print(add_route_ip4("10.0.3.0", "24", "10.0.2.1"))
+    # print(add_route_ip4("10.0.3.0", "24", "10.0.2.1"))
     # print(add_default_route_ip4("10.0.2.1"))
 
     # # ROUTER 1
@@ -589,7 +646,7 @@ if __name__ == "__main__":
     # print(set_interface_ip4("e1", "66.45.3.3", "24"))
     # print(add_default_route_ip4("66.45.2.1"))
     
-    # LAB3
+    # LAB 4
     # R1
     # print(set_interface_ip4("e0", "10.0.1.1", "24"))
     # print(set_interface_ip4("e1", "10.0.2.1", "24"))
@@ -603,7 +660,7 @@ if __name__ == "__main__":
     # print(set_interface_ip4("e1", "10.0.4.3", "24"))
     
     # R1, R2 and R3
-    # print(setup_rip("10.0.0.0", 10))
+    # print(setup_rip("10.0.0.0"))
 
     # R4
     # print(set_interface_ip4("e0", "10.0.1.33", "24"))
@@ -620,6 +677,16 @@ if __name__ == "__main__":
     # print(set_ospf_metric("e0", 1))
 
     # BGP
+    
+    # network network-number [mask network-mask ] [route-map route-map-name ]
+
+    # Example:
+
+    # Device(config-router)# network 10.1.1.0 mask 255.255.255.0
+    # (Optional) Specifies a network as local to this autonomous system and adds it to the BGP routing table.
+
+    # For exterior protocols, the network command controls which networks are advertised. Interior protocols use the network command to determine where to send updates
+
     # R1
     # print(set_interface_ip4("e0", "10.0.1.1", "24"))
     # print(set_interface_ip4("e1", "10.0.10.1", "24"))
@@ -644,16 +711,19 @@ if __name__ == "__main__":
     # print(set_interface_ip4("e0", "10.0.3.3", "24"))
     # print(set_interface_ip4("e1", "10.0.20.3", "24"))
     # print(setup_bgp(300, [
-    #     ("10.0.4.0", 24)
+    #     ("10.0.3.0", 24),
+    #     ("10.0.20.0", 24)
     # ], [
     #     ("10.0.20.4", 400),
+    #     ("10.0.3.33", 300) # FINAL CONFIG NEEDS THIS
     # ]))
 
     # R4
     # print(set_interface_ip4("e0", "10.0.4.4", "24"))
     # print(set_interface_ip4("e1", "10.0.20.4", "24"))
     # print(setup_bgp(400, [
-    #     ("10.0.4.0", 24)
+    #     ("10.0.4.0", 24),
+    #     ("10.0.20.0", 24) # redundant as r3 already publishes this but putting as a practice
     # ], [
     #     ("10.0.20.3", 300),
     # ]))
@@ -662,11 +732,14 @@ if __name__ == "__main__":
     # print(set_interface_ip4("e0", "10.0.3.33", "24"))
     # print(set_interface_ip4("e1", "10.0.10.33", "24"))
     # print(setup_bgp(300, [
-    #     ("10.0.1.0", 24),
-    #     ("10.0.2.0", 24),
+    #     # ("10.0.1.0", 24), NOTE: R5 DO NOT NEED TO advertise 10.0.1.0, router only need to advertise their connected interface subnets 
+    #     # ("10.0.2.0", 24), NOTE: R5 DO NOT NEED TO advertise 10.0.2.0, router only need to advertise their connected interface subnets
+    #      ("10.0.10.33", 24),
+    #      ("10.0.3.33", 23)
     # ], [
     #     ("10.0.10.1", 100),
-    #     ("10.0.10.2", 200)
+    #     ("10.0.10.2", 200),
+    #     ("10.0.3.3", 300) # FINAL CONFIG NEEDS THIS
     # ]))
     
     # R5 iBGP
@@ -678,6 +751,8 @@ if __name__ == "__main__":
     # print(setup_bgp(300, [], [
     #     ("10.0.3.33", 300)
     # ]))
+
+    # print(bgp_selective_transit(["10.0.1.0/24", "10.0.3.0/24"], ["10.0.10.1", "10.0.10.2"], 300))
 
     #  LAB 5
     # R1 & R4
@@ -703,10 +778,10 @@ if __name__ == "__main__":
     # print(disable_cdp_loop())
 
     # # R2
-    print(set_interface_ip4("e0", "10.0.3.1", "24"))
-    print(set_interface_ip4("s0", "10.0.2.2", "24"))
-    print(add_default_route_ip4("10.0.2.1"))
-    print(disable_cdp_loop())
+    # print(set_interface_ip4("e0", "10.0.3.1", "24"))
+    # print(set_interface_ip4("s0", "10.0.2.2", "24"))
+    # print(add_default_route_ip4("10.0.2.1"))
+    # print(disable_cdp_loop())
 
     # R1
     # print(set_interface_ip6("e0", "fd01:2345:6789:1::1", "64"))
@@ -724,5 +799,6 @@ if __name__ == "__main__":
     # print(disable_cdp_loop())
     # print(set_interface_mtu("s0", 1280))
 
-
-    
+    # print(ospf_active("e0"))
+    # print(ospf_router_id("1.2.3.4"))
+    # print(set_data_rate("s0", 1200))
