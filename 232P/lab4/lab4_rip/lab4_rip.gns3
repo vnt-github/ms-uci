@@ -410,68 +410,6 @@
                     }
                 ],
                 "suspend": false
-            },
-            {
-                "filters": {},
-                "link_id": "a066fe81-9d38-40c0-b216-b66cecd0fa4b",
-                "nodes": [
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "f0/0",
-                            "x": -7,
-                            "y": 22
-                        },
-                        "node_id": "06f3171b-1f8c-4d47-bbe9-4542c4fbe5db",
-                        "port_number": 0
-                    },
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "e2",
-                            "x": 75,
-                            "y": 16
-                        },
-                        "node_id": "cfb9d951-e991-4f41-9dfb-dedafc85b5ed",
-                        "port_number": 2
-                    }
-                ],
-                "suspend": false
-            },
-            {
-                "filters": {},
-                "link_id": "3e88a791-326b-4ade-8d7a-fe63b7038e41",
-                "nodes": [
-                    {
-                        "adapter_number": 1,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "f1/0",
-                            "x": 73,
-                            "y": 22
-                        },
-                        "node_id": "06f3171b-1f8c-4d47-bbe9-4542c4fbe5db",
-                        "port_number": 0
-                    },
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "e2",
-                            "x": -4,
-                            "y": 16
-                        },
-                        "node_id": "0c2834d1-9cc1-4303-8071-8dc567a92f0e",
-                        "port_number": 2
-                    }
-                ],
-                "suspend": false
             }
         ],
         "nodes": [
@@ -502,7 +440,7 @@
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "93e9d1838d65632f2a54fcb984b91a2ef705667ebc75832144fc37d7bb0e6af2",
+                    "container_id": "4d3acb3fb5ce02d699ad8f2d089704d0b0fa6ea4eccd922610a91b96f292176a",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],
@@ -519,7 +457,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5000,
+                "console": 5002,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -575,7 +513,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5001,
+                "console": 5003,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -631,7 +569,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5002,
+                "console": 5004,
                 "console_auto_start": false,
                 "console_type": "telnet",
                 "custom_adapters": [],
@@ -712,7 +650,7 @@
                     "console_http_path": "/",
                     "console_http_port": 80,
                     "console_resolution": "1024x768",
-                    "container_id": "b790f713b4cebccea92618cb4056e592f4a4d48ae1e3ed322abf1e4691f84968",
+                    "container_id": "c1c516fad95c88f87455febcffe78933cb372a22fc33b6ec33d7c273d2d231d2",
                     "environment": null,
                     "extra_hosts": null,
                     "extra_volumes": [],

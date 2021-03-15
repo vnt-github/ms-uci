@@ -145,7 +145,7 @@ def get_zebra_password():
     return f"sudo cat /etc/quagga/ospfd.conf"
 
 # https://learningnetwork.cisco.com/s/question/0D53i00000Kt6cX/rip-timers
-def setup_rip(network, prefix, interface):
+def setup_rip(interface, network="0.0.0.0", prefix="0"):
     return f"""
 sudo service zebra restart
 sudo service ripd restart
@@ -160,7 +160,6 @@ passive-interface {getInterface(interface)}
 end
 show ip rip
 exit
-netstat -rn
 """
 
 def setup_ospf(network, prefix, interface, area=1):
@@ -319,7 +318,7 @@ if __name__ == "__main__":
     # DOEST NOT UPDATE THE BETTER ROUTER EVEN ON ICMP_REDIRECT ENABLE
     # print(add_default_route_ip4("10.0.4.3"))
 
-    # print(setup_rip("10.0.0.0", "8", "e0"))
+    # print(setup_rip("e0", "10.0.0.0", "8"))
     
     # OSPF
     # print(setup_ospf("10.0.0.0", "8", "e0"))
@@ -415,3 +414,28 @@ if __name__ == "__main__":
     
     # print(setup_nc_server(udp=True))
     # print(send_data(1000000, "10.0.3.33"))
+
+    # PRACTICE
+
+    
+    # PC1
+    # print(set_interface("e0", "52.78.64.11", "24"))
+
+    # # PC2
+    # print(set_interface("e0", "52.78.65.22", "24"))
+
+    # PC3
+    # print(set_interface("e0", "52.78.66.33", "24"))
+
+    # print(setup_ospf("52.78.64.0", "16", "e0"))
+
+    # PC4
+    # print(set_interface("e0", "10.0.1.44", "24"))
+    # print(setup_rip("10.0.0.0", "8", "e0"))
+    # print(add_default_route_ip4("10.0.1.1"))
+
+    # print(set_interface("e0", "52.78.64.11", "24"))
+    # print(setup_rip("e0"))
+
+    # print(set_interface("e0", "10.0.1.11", "24"))
+    # print(setup_rip("e0"))

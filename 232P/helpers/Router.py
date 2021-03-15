@@ -321,15 +321,15 @@ exit
 # THE SUBNET IS ALWAYS 24, use end 0s for subnets
 # https://learncisco.net/courses/icnd-1/ip-routing-technologies/enabling-rip.html
 # https://learningnetwork.cisco.com/s/question/0D53i00000Kt6cX/rip-timers
-def setup_rip(network, update_sec='', invalid_sec='', hold_sec='', flush_sec=''):
+def setup_rip(network="0.0.0.0", update_sec=10, invalid_sec=60, hold_sec=60, flush_sec=80):
     return f"""
 config term
 router rip
 version 2
 network {network}
-timers basic {update_sec} {invalid_sec} {hold_sec} {flush_sec}
 end
 """
+# timers basic {update_sec} {invalid_sec} {hold_sec} {flush_sec}
 
 # offset-list 0 in 10 f0/0
 def set_rip_offset(interface, in_out, value):
@@ -684,7 +684,6 @@ if __name__ == "__main__":
 
     # Device(config-router)# network 10.1.1.0 mask 255.255.255.0
     # (Optional) Specifies a network as local to this autonomous system and adds it to the BGP routing table.
-
     # For exterior protocols, the network command controls which networks are advertised. Interior protocols use the network command to determine where to send updates
 
     # R1
@@ -802,3 +801,55 @@ if __name__ == "__main__":
     # print(ospf_active("e0"))
     # print(set_ospf_router_id("1.2.3.4"))
     # print(set_data_rate("s0", 1200))
+
+    # PRACTICE
+
+    # print(set_interface_ip4("e0", "52.78.64.1", "24"))
+    # print(set_interface_ip4("e1", "52.78.65.1", "24"))
+    
+    # print(set_interface_ip4("e0", "52.78.65.2", "24"))
+    # print(set_interface_ip4("e1", "52.78.66.2", "24"))
+    
+    # print(set_interface_ip4("e0", "10.0.2.2", "24"))
+    # print(set_interface_ip4("e1", "52.78.64.3", "24"))
+    # print(set_interface_ip4("e3", "52.78.66.3", "24"))
+    # print(setup_bgp(100, [
+    #     ("52.78.0.0", "16")
+    # ], [
+    #     ("52.78.67.4", 100)
+    # ]))
+
+    # print(setup_ospf("52.78.0.0", "16"))
+    
+    # print(setup_bridge(["e0", "e1", "e3"]))
+    
+    # print(set_interface_ip4("e0", "52.78.67.4", "24"))
+    # print(set_interface_ip4("e1", "10.0.1.1", "24"))
+    
+    # print(setup_rip("10.0.0.0"))
+    # print(setup_bgp(100, [
+    #     ("10.0.0.0", "8")
+    # ], [
+    #     ("52.78.67.3", 100)
+    # ]))
+
+
+    # print(set_interface_ip4("e0", "52.78.64.1", "24"))
+    # print(set_interface_ip4("e1", "10.0.2.2", "24"))
+    # print(setup_rip("0.0.0.0"))
+
+    # print(set_interface_ip4("e0", "10.0.1.1", "24"))
+    # print(set_interface_ip4("e1", "10.0.2.1", "24"))
+    # print(setup_rip("0.0.0.0"))
+
+    # print(setup_bgp(100, [(
+    #     ("52.0.0.0", "8")
+    # )], [
+    #     ("10.0.2.1", 200)
+    # ]))
+
+    # print(setup_bgp(200, [
+    #     ("10.0.0.0", "8")
+    # ], [
+    #     ("10.0.2.2", 100)
+    # ]))
