@@ -238,5 +238,10 @@ python trade.py 2006 11 12 ~/tmp_dir/ ~/stocks/ > $SAVE_PATH && adversary $SAVE_
 
 - scrape progress
 ```
-wc -l ~/tmp_dir/stocks_data_2006-1*
+wc -l ~/tmp_dir/stocks_data_20*
+```
+
+- to scrap .html
+```
+echo $((`find . -name "*.html" | wc -l`-`find . -name "*.*.html" | wc -l`))
 ```

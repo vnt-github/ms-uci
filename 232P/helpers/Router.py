@@ -853,3 +853,21 @@ if __name__ == "__main__":
     # ], [
     #     ("10.0.2.2", 100)
     # ]))
+
+    print("="*100)
+    # R1
+    # print(set_interface_ip4("e0", "66.45.5.1", "24"))
+    # print(set_interface_ip4("e1", "66.45.4.1", "24"))
+
+    # # R2
+    # print(set_interface_ip4("e0", "66.45.4.2", "24"))
+    # print(set_interface_ip4("e1", "66.45.7.2", "24"))
+    
+    # R3
+    # print(set_interface_ip4("e0", "66.45.6.3", "24"))
+    # print(set_interface_ip4("e1", "66.45.7.3", "24"))
+
+    # print(setup_bridge(["e0", "e1"]))
+    # print(setup_ospf("66.0.0.0", "8"))
+
+    # print(set_ospf_metric("e0", 10))

@@ -1,0 +1,15 @@
+- main contirbution:
+    - key problem
+    - proposed techniques and approaches
+- critique of approach
+- advantages
+    - localized failure for a subnet cluster server isolates on cluster failure from other.
+
+- limitations    
+    - the initial time to create replica can be time consuming, especially large file. Where as in client-server it would be lesser.
+    - in larger subnet the same problems arise as locality of data again becomes bottleneck.
+    - may be need  to be heirarchally implemented
+    - adds administrative and maintainance to make sure the cluster are in sync.
+    - the failed subnet cluster will need to reinit and reconcile all the client sessions files before disconnecion. which is quite complex.
+    - NOT SUITABLE FOR DISTRIBUTED WRITE HEAVY SYSTEMS:
+        - a file can only be modified by a single cluster at a time, this cluster being denoted the owner of the file.

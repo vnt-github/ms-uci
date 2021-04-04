@@ -1,4 +1,32 @@
 - develop a website which takes the link of the folders where it's  uploaded and it'll recgonize the pdf and video and pitch to reorganize
 them  so that it's suitable for presentation
 - have options for coordinator for admin task of making a group active and inactive etc.
-- give download link to autorized and authenticated  students
+- give download link to autorized and authenticated students.
+
+
+
+- product then soft eng.
+	- neural ntw on vocal data.
+	- music and sound processing.
+	- pitches can be tracked.
+	- app that will listen to voice
+	- sample notes to sing.
+	- how good a singer you are.
+- teach some song to person.
+	- teach songs to person.
+
+
+
+
+- webGL. 3js
+- isometric design.
+- crossy roads.
+
+
+- figure out reviews are fake or not.
+	- nlp.
+- yelp.
+- stony brooks.
+
+
+- find min element in an array
