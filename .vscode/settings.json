@@ -70,7 +70,8 @@
         "future": "cpp",
         "iomanip": "cpp",
         "scoped_allocator": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "queue": "cpp"
     },
     "python.pythonPath": "/usr/bin/python3",
     "python.analysis.extraPaths": ["./232P/helpers"]

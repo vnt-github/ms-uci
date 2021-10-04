@@ -1,0 +1,4 @@
+1. We considered createStudio. https://createstudio.com/download/
+2. Yes, we plan to use animation tools provided by createStudio.
+3. Yes, we plan to use the same software for both videos.
+4. Yes, Shuvam Ghosh in our team have some experience. He also prefers createStudio.
