@@ -1,0 +1,40 @@
+
+- [x] email for aws
+- [x] 296 is too big?
+- [ ] 296 project elevator pitch.
+- [ ] 297 vmware setup
+
+this is a change.
+
+- [ ] create github tasks
+    - [ ] list previous tasks as well.
+- [ ] 297P quiz
+
+project elevator
+- what is our project?
+    - Our project is to create an interactive platform where web developers can experiment and learn about various cyber security threats.
+- why did you select this topic?
+    - we want to deveope this because,
+    - The number of people learning and getting into web development is growing day-by-day and so is the need for secure software development. 
+    - the knowledge of cyber security is restricted to a few “experts” as it is not not easily availble or readily accessable.
+    - Our solutions would enable developers to proactively learn and write secure code.
+
+- what will we learn.
+    - As we deveop our Solution,
+    - we will be Setting up various exploitable sandboxed environments and making them accessible from web UI, which will enable us 
+    - to learn about Cyber Security in depth.
+    - to learn  about how to host and handle sandbox environments.
+    - AND
+    - we will learn how to deveop a tutorial platform.
+    - As we will work in sprints, hence we will also learn about Agile software development practices.
+- what will i bring to project.
+
+I have cyber security experience and I am an incoming Application Security Researcher at
+Adobe for Summer Internship, So i will participate in the Cyber security aspect of our
+project.
+Along with that, I have 3+ years of professional experience in Backend Development with
+Architecture Design on AWS and GCP, hence I'll also be involved in the backend system
+architecture and services design.
+
+
+- [npm local packages commandline error fix](https://2ality.com/2016/01/locally-installed-npm-executables.html).

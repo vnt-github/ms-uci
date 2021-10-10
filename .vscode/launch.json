@@ -18,7 +18,7 @@
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [
-                "program.txt"
+                "main.c"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
