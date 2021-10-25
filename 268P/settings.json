@@ -1,0 +1,9 @@
+// {
+//     "python.pythonPath": [
+//         "C:\\Users\\asus\\AppData\\Local\\Programs\\Python\\Python38"
+//     ],
+//     "python.analysis.extraPaths": [
+//         "C:\\gurobi\\gurobi912",
+//         "C:\\Users\\asus\\AppData\\Local\\Programs\\Python\\Python38\\Lib\\site-packages\\gurobipy"
+//     ]
+// }

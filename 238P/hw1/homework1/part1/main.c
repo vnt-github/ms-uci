@@ -18,7 +18,7 @@ unsigned long crash_array(int n) {
     if (n > sizeof(a)/sizeof(int))
         n = sizeof(a)/sizeof(int);
 
-    printf("%d\n", n);
+    // printf("%d\n", n);
     
     for (i = 0; i < n; i++) {
         sum = sum + a[i];
@@ -39,11 +39,11 @@ unsigned long sum(int n) {
 
 int main(void) {
     
-    printf("Hello world\n"); 
+    printf("Hello world, "); 
 
     unsigned long s;
     s = sum(100);
-    printf("Sum:%ld\n", s);
+    printf("the sum:%ld\n", s);
 
     // int i;
     // for (i = 0; i < 32; i++)

@@ -41,6 +41,8 @@
 
 *.bin
 
+*.msi
+
 project-files/
 
 **/node_modules/

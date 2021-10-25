@@ -1,0 +1,2 @@
+- 20% quizzes 80% projects.
+- no midterm, no finals.
