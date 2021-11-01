@@ -1,0 +1,212 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{MCS 268P}
+\newcommand\hwnumber{3}                  % <-- homework number
+\newcommand\NetIDa{Name: Vineet Bharot  \quad UCI NetID: vbharot \quad Enrollment No: 88649968}           % <-- NetID of person #1
+\newcommand\NetIDb{Homework 3}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Formulating LPs and ILPs}} %\hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+\section*{Question 1}
+\begin{itemize}
+    \item The best "bang for buck" chargers are as follows:
+        \begin{center}
+            \begin{tabular}{r|ccccc}
+                 product \# & Product type & sockets & charge time  & Price \\ \hline
+                 7 & Three-phase commercial & 2 & 1 & from £6,800 \\
+                 9 & QC, CHAdeMO AC/DC 3 Phase & 2 & 0.5 & From £35,000 \\ 
+            \end{tabular}
+        \end{center}
+    Product 7 is the best choice for private chargers (Type B) and Product 9 is the best choice for public chargers (Type A).
+    They offer shorter charging time with more ports as compared to other choices.
+    \item Upper bound on the number of cars that can be charged each day for each type is given by the formulae below: \\
+        \begin{align}
+            24*(number of sockets) \div (typical charge time)  \quad cars\ per \ day
+        \end{align}
+        
+        for Type B i.e. product 7 we get: 24*2/1 = 48 cars per day \\
+        for Type A i.e. product 9 we get: 24*2/0.5 = 96 cars per day
+\end{itemize}
+
+\section*{Question 2}
+\begin{itemize}
+    \item the following are the decision variables in this problem
+        \begin{align}
+            x1\ =\ the\ number\ of\ private\ charger\ Type\ A\ Product\ i.e.\ 7 \\
+            x2\ =\ the\ number\ of\ public\ charger\ Type\ B\ Product\ i.e.\ 9
+        \end{align}
+\end{itemize}
+
+\section*{Question 3}
+\begin{itemize}
+    \item the objective function is as follows: minimizing the cost of buying type A and type B chargers such that expected future daily traffic flow is satisfied. \\
+    
+     maximizing the number of cars charged if there is not boundary on cost is not correct because in that case the solution be just add all the "potential location for new charger" for Type A and  "1 percent of numbers Ecotricity customers Type B" chargers then you'll get the maximum number of cars charged. There is no optimization to be done in that case.
+        \begin{align}
+            minimize (10000x1 + 35000x2)
+        \end{align}
+\end{itemize}
+
+\section*{Question 4}
+\begin{itemize}
+    \item The essential information in Exhibit 2 is as follows.
+        The increase in percentage of total car registration and Number of EV registration can be used to account for the future daily traffic flow.
+\end{itemize}
+
+\section*{Question 5}
+\begin{itemize}
+    \item we have the following assumptions from the Exibit 4: \\
+    \item[1.]  One per cent, on average, of Ecotricity customers will be willing to install a charging point and will have a suitable location \\
+    \item[2.]  Each charging is done to 100 per cent battery capacity. \\
+    \item[3.]  On average, electric vehicles are charged 80 per cent of the time at their homes and 20 per cent of the time on the highway network. \\
+    \item[4.] One per cent of vehicles on the highway are electric vehicles. \\ 
+    \item[5.]  Any electric vehicle user on a road stretch who requires charging will stop at the nearest charging point within the network.
+\end{itemize}
+
+\newpage
+\section*{Questions 6}
+\begin{itemize}
+    \item The number of additional chargers needed as follows.
+        \begin{center}
+            \begin{tabular}{r|cccc}
+                 Segment \# & AADF & Existing Type A & potential new Type A \\ \hline
+                 01 & 58048 & 4 & 3  \\
+                 02 & 52594 & 2 & 2  \\ 
+                 23 & 62726 & 2 & 4  \\
+                 45 & 61202 & 3 & 2  \\
+                 56 & 76030 & 3 & 2  \\
+            \end{tabular}
+        \end{center}
+        
+        As mentioned that only One per cent of vehicles on the highway are electric vehicles so the above table can be converted to: \\
+        \begin{center}
+            \begin{tabular}{r|cccc}
+                 Segment \# & EV AADF & Existing Type A & potential new Type A \\ \hline
+                 01 & 580.48 & 4 & 3  \\
+                 02 & 525.94 & 2 & 2  \\ 
+                 23 & 627.26 & 2 & 4  \\
+                 45 & 612.02 & 3 & 2  \\
+                 56 & 760.30 & 3 & 2  \\
+            \end{tabular}
+        \end{center}
+        
+        Now for each Type A charger we can on average daily satisfy 96 cars using this we can get the below table from the above table
+        \begin{center}
+            \begin{tabular}{r|cccc}
+                 Segment \# & EV AADF & Existing EVs Demand met & potential new Type A \\ \hline
+                 01 & 580.48 & 384 & 3  \\
+                 02 & 525.94 & 192 & 2  \\ 
+                 23 & 627.26 & 192 & 4  \\
+                 45 & 612.02 & 288 & 2  \\
+                 56 & 760.30 & 288 & 2  \\
+            \end{tabular}
+        \end{center}
+        subtracting the 'Existing EVs Demand met' from 'EV AADF' column we get the 'EVs Demand unfulfilled'
+        \begin{center}
+            \begin{tabular}{r|cc}
+                 Segment \# & EVs Demand unfulfilled & potential new Type A \\ \hline
+                 01 & 196.48 & 3  \\
+                 02 & 333.94 & 2  \\ 
+                 23 & 435.26 & 4  \\
+                 45 & 324.02 & 2  \\
+                 56 & 472.30 & 2  \\
+            \end{tabular}
+        \end{center}
+        dividing the column 'EVs Demand unfulfilled' by 96 we get the 'number of additional chargers needed'
+        \begin{center}
+            \begin{tabular}{r|cc}
+                 Segment \# & number of additional chargers needed & potential new Type A \\ \hline
+                 01 & 2.047 & 3  \\
+                 02 & 3.478 & 2  \\ 
+                 23 & 4.533 & 4  \\
+                 45 & 3.375 & 2  \\
+                 56 & 4.919 & 2  \\
+            \end{tabular}
+        \end{center}
+        using the assumption "One per cent, on average, of Ecotricity customers will be willing to install a charging point and will have a suitable location" we can add the 1 percent of Ecotricity customers as Potential new Type B.
+        \begin{center}
+            \begin{tabular}{r|ccc}
+                 Segment \# & \# of additional chargers needed & potential new Type A & potential new Type B \\ \hline
+                 01 & 2.047 & 3 &  8.45 \\
+                 02 & 3.478 & 2 &  4.53 \\ 
+                 23 & 4.533 & 4 &  3.45 \\
+                 45 & 3.375 & 2 &  3.66 \\
+                 56 & 4.919 & 2 &  6.26 \\
+            \end{tabular}
+        \end{center}
+        
+        using the above table we can create the below equations. Here x1\_j in the number of type A charger on segment j  and x2\_j is the number of type B chargers on segment j.
+        \begin{align}
+            96*x1\_1 + 48*x2\_1 \ge \\
+            96*x1\_2 + 48*x2\_2 \ge \\
+            96*x1\_23 + 48*x2\_23 \ge \\
+            96*x1\_45 + 48*x2\_45 \ge \\
+            96*x1\_56 + 48*x2\_56 \ge \\ 
+            x1\_1 + x1\_2 + x1\_23 + x1\_45 + x1\_56 = x1 \\
+            x2\_1 + x2\_2 + x2\_23 + x2\_45 + x2\_56 = x2 \\
+            x1, x2 >= 0 \\
+            x1, x2 \in Integer \\
+            minimize (3500*x1 + 10000*x2)
+        \end{align}
+\end{itemize}
+
+\newpage
+
+\section*{Question 7}
+\begin{itemize}
+    \item The below enumerates the budged information in the case study. \\
+          \\
+          "Ecotricity  raised  £18.5  million  in  capital  for  six  new  renewable energy projects to power 10,000 homes each year.", As this states that the money should be used to power homes, so we cant say for sure that its the budged for EVs expansion. \\
+          \\
+          "The government’s Electric Vehicle Homecharge Scheme provided EV purchasers with a subsidy of 75 per cent of the total capital cost of installing a home chargepoint, up to a maximum of £500 including taxes.31 The typical cost of a home slow charger was about £1,000 per unit"
+          
+    \item As None of the above information about budged constraint tell use anything about it being binding. So we can say that this budge information is not binding.
+\end{itemize}
+
+
+\end{document}
+
