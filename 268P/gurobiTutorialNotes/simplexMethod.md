@@ -1,0 +1,21 @@
+- problem statement:
+    - objective function:
+        - 45x1+80x2.
+    - 5x1+20x2 <= 400
+    - 10x1+15x2 <= 450
+- standard form:
+    - objective function:
+        - 45x1+80x2.
+    - 5x1+20x2 + h1 == 400
+    - 10x1 + 15x2 == 450
+
+- x1 = 0, x2 = 0, h1 = 400, h2 == 450 is a basic feasible solution
+- x1 = 0, x2 = 30, h1 = -200, h2 = 0 is a basic infeasible solutions because it violates the non negativity constraint.
+    - this means in order to build 30 tables we need extra capacity of 200 units of mahogany.
+
+- LP problem in canonical form wrt basic variables
+- objective function:
+    - max z = 45x1 + 80x2 + 0h1 + 0h2
+- h1 = 400 - 5x1 - 20x2 is unused mahogany
+- h2 = 450 - 10x1 - 15 x2 is unused labor
+- x1, x2, h1, h2 >= 0 non-negativity
